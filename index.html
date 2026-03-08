@@ -17,7 +17,7 @@ nav a{text-decoration:none;color:#333;font-weight:500;font-size:14px;white-space
 nav a:hover{color:#8b1e2d;background:#f2d9df}
 .hero{position:relative}
 .hero-main{width:100%;height:68vh;min-height:380px;object-fit:cover;display:block}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.20),rgba(0,0,0,.35));display:flex;align-items:center;justify-content:center;text-align:center;padding:20px}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.20),rgba(0,0,0,.35));display:flex;align-items:flex-start;justify-content:center;text-align:center;padding:20px;padding-top:120px}
 .lotus-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none}
 .lotus{position:absolute;width:120px;opacity:.12;animation:floatLotus 22s linear infinite;border-radius:18px;filter:saturate(.9)}
 .lotus:nth-child(1){left:8%;animation-duration:26s}
@@ -26,9 +26,9 @@ nav a:hover{color:#8b1e2d;background:#f2d9df}
 .lotus:nth-child(4){left:78%;animation-duration:28s}
 @keyframes floatLotus{0%{transform:translateY(105vh) scale(.85);opacity:0}15%{opacity:.1}85%{opacity:.12}100%{transform:translateY(-160px) scale(1.08);opacity:0}}
 @keyframes goldGlow{0%{text-shadow:0 0 8px rgba(255,215,0,.25),0 2px 10px rgba(0,0,0,.6)}50%{text-shadow:0 0 22px rgba(255,215,0,.48),0 2px 10px rgba(0,0,0,.65)}100%{text-shadow:0 0 8px rgba(255,215,0,.25),0 2px 10px rgba(0,0,0,.6)}}
-.hero-text{color:#fff;max-width:900px}
-.hero-text h1{font-size:52px;margin:0 0 10px;animation:goldGlow 3.2s ease-in-out infinite}
-.hero-text p{margin:0}
+.hero-text{color:#fff;max-width:900px;line-height:1.1}
+.hero-text h1{font-size:52px;margin:0 0 6px;animation:goldGlow 3.2s ease-in-out infinite}
+.hero-text p{margin:0;line-height:1.2}
 .container{max-width:1200px;margin:auto;padding:56px 20px;border-radius:22px;margin-top:18px;margin-bottom:18px}
 #about{background:rgba(255,248,240,0.9)}
 #master{background:rgba(248,245,255,0.9)}
@@ -41,6 +41,7 @@ nav a:hover{color:#8b1e2d;background:#f2d9df}
 #lamp{background:rgba(255,248,240,0.92)}
 #charity{background:rgba(248,245,240,0.92)}
 #contact{background:rgba(245,247,252,0.94)}
+#traffic{background:rgba(255,253,248,0.9)}
 .section-title{text-align:center;margin-bottom:34px}
 .section-title h2{font-size:32px;color:#8b1e2d;margin:0 0 8px}.section-title p{color:#666;margin:0}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
@@ -57,7 +58,8 @@ nav a:hover{color:#8b1e2d;background:#f2d9df}
 #calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
 .calendar-cell{border:1px solid #e3e3e3;border-radius:10px;min-height:110px;padding:8px;background:#fff}
 .calendar-cell strong{display:block;margin-bottom:4px}
-.calendar-event{display:block;background:#f0fff3;color:#1d7a34;font-size:12px;padding:3px 6px;border-radius:6px;margin-top:4px}
+.calendar-cell.has-event{background:#e3f2fd}
+.calendar-event{display:block;background:#f0f8ff;color:#1565c0;font-size:12px;padding:3px 6px;border-radius:6px;margin-top:4px}
 .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
 .gallery figure{margin:0;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.08)}
 .gallery img{width:100%;height:180px;object-fit:cover;display:block}
@@ -73,7 +75,7 @@ nav a:hover{color:#8b1e2d;background:#f2d9df}
 footer{background:#5f1220;color:#fff;text-align:center;padding:28px}
 .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.82);display:none;align-items:center;justify-content:center;padding:20px;z-index:9999}.lightbox.open{display:flex}.lightbox img{max-width:min(92vw,1100px);max-height:88vh;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.35)}.lightbox-close{position:absolute;top:18px;right:22px;background:#fff;color:#8b1e2d;border:none;border-radius:999px;width:42px;height:42px;font-size:24px;cursor:pointer}
 .small-note{font-size:13px;color:#666;text-align:center;margin-top:12px}
-@media(max-width:768px){
+@media(max-width:600px){
 body{background-attachment:scroll}
 .topbar{font-size:12px;padding:7px 12px;text-align:center}
 header{position:sticky;top:0}
@@ -82,7 +84,7 @@ header{position:sticky;top:0}
 nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}
 nav a{font-size:13px;padding:9px 8px;text-align:center}
 .hero-main{height:46vh;min-height:260px}
-.hero-overlay{padding:14px}
+.hero-overlay{padding:14px;padding-top:60px}
 .hero-text h1{font-size:30px;letter-spacing:2px}
 .hero-text p{font-size:15px}
 .container{padding:28px 12px;border-radius:16px;margin-top:12px;margin-bottom:12px}
@@ -124,7 +126,7 @@ nav{grid-template-columns:1fr 1fr}
 .calendar-week,#calendar{grid-template-columns:1fr}
 .calendar-week div:nth-child(n+2){display:none}
 .calendar-cell{min-height:84px}
-}.hero-text h1{font-size:34px}.hero-text p{font-size:16px}.logo{font-size:22px}nav a{font-size:13px;padding:7px 10px}.calendar-week,#calendar{grid-template-columns:repeat(2,1fr)}.calendar-week div:nth-child(n+3){display:none}}
+}
 </style>
 </head>
 <body>
@@ -142,12 +144,14 @@ nav{grid-template-columns:1fr 1fr}
       <a href="#master">創辦人湛願法師</a>
       <a href="#news">最新公告</a>
       <a href="#events">法會活動</a>
+      <a href="activity-gallery.html">活動照片</a>
       <a href="#practice">念佛禪修與靜坐</a>
       <a href="#plaque">消災與超薦牌位</a>
       <a href="#release">放生</a>
       <a href="#lamp">點燈</a>
       <a href="#charity">慈善基金</a>
       <a href="#contact">聯絡我們</a>
+      <a href="#traffic">交通資訊</a>
     </nav>
   </div>
 </header>
@@ -202,7 +206,11 @@ nav{grid-template-columns:1fr 1fr}
     </div>
     <div class="card">
       <h3>法師身影</h3>
-      <p></p>
+      <div class="gallery">
+        <figure><img src="法師照1.jpg" alt="法師身影"><figcaption>湛願法師</figcaption></figure>
+        <figure><img src="法師照2.jpg" alt="法師身影"><figcaption>湛願法師</figcaption></figure>
+        <figure><img src="法師照3.jpg" alt="法師身影"><figcaption>湛願法師</figcaption></figure>
+      </div>
     </div>
   </div>
 </section>
@@ -213,18 +221,18 @@ nav{grid-template-columns:1fr 1fr}
     <p>道場近期訊息與護持事項</p>
   </div>
   <div class="card" style="padding:0">
-    <div class="news-item"><div class="date">2026 / 03 / 05</div><p>3/19(四)早上9點 共修藥師經佛前大供暨放生。</p></div>
-    <div class="news-item"><div class="date">2026 / 03 / 05</div><p>3/29(日)下午1點半 清明孝親報恩冥陽兩利三時繫念大法會(備有超薦牌位)。</p></div>
-    <div class="news-item"><div class="date">2026 / 03 / 05</div><p>2026年度佛前消災祈福光明燈祿位年繳、半年繳登記。</p><p>（道場每逢農曆初一、十五共修及法會，三寶加被宣疏迴向護法大德，佛光注照、本命元辰。）</p></div>
-    <div class="news-item"><div class="date">2026 / 03 / 05</div><p>為病苦者點燈（藥師經云：生病之人連續49日，日燃49燈可得藥師琉璃光如來不可思議之加持力。）</p><p>為往生者點燈49日可蒙佛光接引。</p></div>
-    <div class="news-item"><div class="date">2026 / 03 / 05</div><p>為現世者、病苦者放生可消刀兵劫、消災免難。</p><p>為往生者放生可累積往生福德資糧。</p></div>
-  </div>
+    <div class="news-item"><div class="date">2026 / 03 / 05</div><p>3/19(四)早上9點 共修藥師經，佛前大供暨放生。</p></div>
+    <div class="news-item"><div class="date">2026 / 03 / 05</div><p>3/29(日)下午1點半 清明孝親報恩，冥陽兩利三時繫念大法會。(備有超薦牌位)</p></div>
+    <div class="news-item"><div class="date">2026 / 03 / 05</div><p>2026年度佛前消災祈福光明燈祿位年繳、半年繳登記。</p><p>（道場每逢農曆初一、十五共修及法會，三寶加被，宣疏迴向護法大德，佛光注照、本命元辰。）</p></div>
+    <div class="news-item"><div class="date">2026 / 03 / 05</div><p>為病苦者點燈（藥師經云：生病之人連續49日，日燃49燈，可得藥師琉璃光如來不可思議之加持力。）</p><p>為往生者點燈49日，可蒙佛光接引。</p></div>
+    <div class="news-item"><div class="date">2026 / 03 / 05</div><p>為現世者、病苦者放生，可消刀兵劫、消災免難。</p><p>為往生者放生，可累積往生福德資糧。</p></div>
+  </div
 </section>
 
 <section class="container" id="events">
   <div class="section-title"><h2>法會活動</h2><p>年度共修與重要法會</p></div>
   <div class="grid">
-    <div class="event"><h3>每逢農曆初一、十五共修</h3><p>誦經祈福、佛前大供、護生放生。</p></div>
+    <div class="event"><h3>每逢農曆初一、十五共修</h3><p>誦經祈福、│禮懺、念佛繞佛、靜坐、佛前大供、放生。</p></div>
     <div class="event"><h3>佛菩薩聖誕及成道日法會</h3><p>（備有消災或超薦牌位）</p><p>禮懺、誦經、祈福回向，增長福慧資糧。</p></div>
     <div class="event"><h3>中元普渡</h3><p>（備有超薦牌位）</p><p>瑜伽焰口法會，冥陽兩利、廣結善緣。</p></div>
   </div>
@@ -236,7 +244,7 @@ nav{grid-template-columns:1fr 1fr}
     <div class="calendar-toolbar"><button onclick="prevMonth()">上一月</button><h3 id="monthTitle"></h3><button onclick="nextMonth()">下一月</button></div>
     <div class="calendar-week"><div>日</div><div>一</div><div>二</div><div>三</div><div>四</div><div>五</div><div>六</div></div>
     <div id="calendar"></div>
-    <div class="small-note">綠色標示為法會或共修活動。</div>
+    <div class="small-note">藍色標示為法會或共修活動。</div>
   </div>
 </section>
 
@@ -304,6 +312,70 @@ nav{grid-template-columns:1fr 1fr}
   </div>
 </section>
 
+<section id="traffic" class="container traffic-section">
+  <div class="section-title">
+    <h2>交通資訊</h2>
+    <p>歡迎十方善信蒞臨觀音琉璃道場禮佛</p>
+  </div>
+
+  <div class="traffic-grid">
+    <div class="traffic-card">
+      <p><strong>觀音琉璃道場(新北市板橋區縣民大道三段147號)</strong></p>
+        <a href="https://maps.google.com/?q=新北市板橋區縣民大道三段147號" target="_blank">
+          開啟 Google 地圖導航
+        </a>
+      </p>
+    </div>
+
+    <div class="traffic-card">
+      <h3>捷運前往</h3>
+      <p>搭乘 <strong>台北捷運板南線</strong> 至 <strong>江子翠站</strong>。</p>
+      <p>建議由 <strong>3號出口</strong> 出站，步行約 5～10 分鐘即可抵達。</p>
+      <p>若攜帶長者或行動不便者，建議搭配地圖導航前往，亦可轉搭計程車。</p>
+      <p>行動方便者，出口亦有youbike可以騎乘，騎至永安活動中心外設有歸還站點，歸還後往前步行至十字路口，右轉即可看到觀音琉璃道場。</p>
+    </div>
+    
+    <div class="traffic-card">
+      <h3>公車前往</h3>
+      <p>可搭乘公車667、651、604至附近站點後步行前往。</p>
+      <p>建議可查詢行經 <strong>雙十路、縣民大道</strong> 一帶之公車路線。</p>
+      <p>出發前可用 Google 地圖或公車動態系統確認最新班次資訊。</p>
+    </div>
+
+    <div class="traffic-card">
+      <h3>火車前往</h3>
+      <p>搭乘至板橋火車站，下車後往『出口西 公車City Bus』方向出站，走至『公車候車區第二月台』乘車處，搭乘667 至 『海山天下社區站牌』下車，走至7-11後，對面即可看到觀音琉璃道場。</p>
+      <p>搭乘至萬華火車站，下車後走至火車站前的公車站牌，搭乘667確認公車是往『板橋/板橋後站方向』，搭至『雙十路口站牌』下車，往回走即可看到觀音琉璃道場。</p>
+  
+    </div>
+
+    <div class="traffic-card">
+      <h3>自行開車</h3>
+      <p>導航請搜尋：</p>
+      <p><strong>觀音琉璃道場 或 新北市板橋區縣民大道三段147號</strong><br></p>
+      <p>周邊可留意路邊停車格或附近停車場，建議提早出發以利停車。</p>
+    </div>
+  </div>
+
+  <div class="traffic-map-box">
+    <h3>地圖導航</h3>
+    <div class="map-wrap">
+      <iframe
+        src="https://maps.google.com/maps?q=新北市板橋區縣民大道三段147號&t=&z=16&ie=UTF8&iwloc=&output=embed"
+        width="100%"
+        height="380"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy">
+      </iframe>
+    </div>
+  </div>
+
+  <div class="traffic-note">
+    <p>溫馨提醒：若遇法會、共修或特殊活動日，現場人車較多，建議提早出門，以免耽誤行程。</p>
+  </div>
+</section>
+
 <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
   <button class="lightbox-close" type="button" aria-label="關閉">×</button>
   <img id="lightboxImg" src="" alt="放大圖片">
@@ -346,7 +418,10 @@ function renderCalendar(){
     const dayEvents=[];
     if(events[dateStr]) dayEvents.push(events[dateStr]);
     if(recurringEvents[dateStr] && !dayEvents.includes(recurringEvents[dateStr])) dayEvents.push(recurringEvents[dateStr]);
-    if(dayEvents.length){html += dayEvents.map(item => `<div class="calendar-event">${item}</div>`).join('');}
+    if(dayEvents.length){
+      html += dayEvents.map(item => `<div class="calendar-event">${item}</div>`).join('');
+      cell.classList.add('has-event');
+    }
     cell.innerHTML=html;
     cal.appendChild(cell);
   }
