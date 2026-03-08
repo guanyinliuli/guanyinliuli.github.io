@@ -21,9 +21,19 @@ nav a.active{color:#fff;background:#8b1e2d}
 .section-title{text-align:center;margin-bottom:34px}
 .section-title h2{font-size:32px;color:#8b1e2d;margin:0 0 8px}
 .section-title p{color:#666;margin:0}
-.poster{max-width:600px;display:block;margin:0 auto 24px}
+@keyframes slideInLeft{0%{opacity:0;transform:translateX(-30px)}100%{opacity:1;transform:translateX(0)}}
+.poster{max-width:600px;display:block;margin:0 auto 24px;opacity:0;}
 .form-link{display:block;text-align:center;margin-top:24px}
 .form-link a{background:#8b1e2d;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:700}
+@media(max-width:600px){
+  nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:10px}
+  nav a{font-size:12px;padding:6px 6px;text-align:center}
+  .container{padding:28px 12px;border-radius:16px;margin-top:12px;margin-bottom:12px}
+  .section-title h2{font-size:24px}
+  .section-title p{font-size:14px}
+  .poster{max-width:100%;height:auto;margin-bottom:16px}
+  .form-link a{padding:10px 20px;font-size:14px}
+}
 </style>
 </head>
 <body>
@@ -85,6 +95,7 @@ if(date){
   if(posterMap[date]){
     poster.src=posterMap[date];
     poster.style.display='block';
+    poster.style.animation='slideInLeft 1s ease-out forwards';
   } else {
     poster.style.display='none';
   }
