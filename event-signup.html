@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>活動報名</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+body{font-family:"Noto Sans TC",sans-serif;margin:0;background:#f6f7fb;color:#333;line-height:1.7}
+.topbar{background:#e9edf7;padding:8px 20px;font-size:13px;text-align:right}
+header{background:#fff;border-bottom:1px solid #e5e5e5;position:sticky;top:0;z-index:20}
+.header-inner{max-width:1280px;margin:auto;padding:12px 18px}
+.header-top{display:flex;align-items:center;justify-content:center}
+.logo{font-size:28px;font-weight:700;color:#8b1e2d;letter-spacing:1px}
+nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:12px}
+nav a{text-decoration:none;color:#333;font-weight:500;font-size:14px;white-space:nowrap;padding:8px 12px;border-radius:999px;background:#f7ebee}
+nav a:hover{color:#8b1e2d;background:#f2d9df}
+nav a.active{color:#fff;background:#8b1e2d}
+.container{max-width:1200px;margin:auto;padding:56px 20px;border-radius:22px;margin-top:18px;margin-bottom:18px}
+#signup-content{background:rgba(227,242,253,0.6)}
+.section-title{text-align:center;margin-bottom:34px}
+.section-title h2{font-size:32px;color:#8b1e2d;margin:0 0 8px}
+.section-title p{color:#666;margin:0}
+.poster{max-width:600px;display:block;margin:0 auto 24px}
+.form-link{display:block;text-align:center;margin-top:24px}
+.form-link a{background:#8b1e2d;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:700}
+</style>
+</head>
+<body>
+<div class="topbar">歡迎蒞臨觀音琉璃道場官方網站</div>
+<header>
+  <div class="header-inner">
+    <div class="header-top">
+      <div class="logo">觀音琉璃道場</div>
+    </div>
+    <nav>
+      <a href="index.html#home">首頁</a>
+      <a href="index.html#about">道場介紹</a>
+      <a href="index.html#master">創辦人湛願法師</a>
+      <a href="index.html#news">最新公告</a>
+      <a href="index.html#events">法會活動</a>
+      <a href="activity-gallery.html">活動照片</a>
+      <a href="index.html#practice">念佛禪修與靜坐</a>
+      <a href="index.html#plaque">消災與超薦牌位</a>
+      <a href="index.html#release">放生</a>
+      <a href="index.html#lamp">點燈</a>
+      <a href="index.html#charity">慈善基金</a>
+      <a href="index.html#contact">聯絡我們</a>
+      <a href="index.html#traffic">交通資訊</a>
+    </nav>
+  </div>
+</header>
+<section class="container" id="signup-content">
+  <div class="section-title">
+    <h2>活動報名</h2>
+    <p id="subtext"></p>
+  </div>
+  <img src="" class="poster" id="poster" alt="活動海報" style="display:none;">
+  <div class="form-link" id="formLink"></div>
+</section>
+<footer><p>© 2026觀音琉璃道場</p></footer>
+<script>
+function getQueryParam(name){
+  const params=new URLSearchParams(window.location.search);
+  return params.get(name);
+}
+const date=getQueryParam('date');
+const subtext=document.getElementById('subtext');
+const poster=document.getElementById('poster');
+const formLink=document.getElementById('formLink');
+if(date){
+  subtext.textContent=date+" 法會報名";
+  // 海報與表單對應
+  const posterMap={
+    '2026-03-19':'3.19海報.png',
+    '2026-03-29':'3.29海報.jpg',
+    '2026-04-06':'4.6海報.png',
+    '2026-05-31':'5.31海報.png',
+    '2026-06-28':'6.28海報.png',
+    '2026-09-13':'9.13海報.png'
+  };
+  const formMap={
+    '2026-03-29':'https://forms.gle/ptCJJisfvYWkpr9Z7'
+  };
+  if(posterMap[date]){
+    poster.src=posterMap[date];
+    poster.style.display='block';
+  } else {
+    poster.style.display='none';
+  }
+  if(formMap[date]){
+    formLink.innerHTML=`<a href="${formMap[date]}" target="_blank">前往 ${date} 報名表單</a>`;
+  } else {
+    formLink.innerHTML=`<p>尚無對應報名連結。</p>`;
+  }
+} else {
+  subtext.textContent='無效日期';
+}
+</script>
+</body>
+</html>

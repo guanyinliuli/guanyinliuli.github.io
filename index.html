@@ -17,7 +17,7 @@ nav a{text-decoration:none;color:#333;font-weight:500;font-size:14px;white-space
 nav a:hover{color:#8b1e2d;background:#f2d9df}
 .hero{position:relative}
 .hero-main{width:100%;height:68vh;min-height:380px;object-fit:cover;display:block}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.20),rgba(0,0,0,.35));display:flex;align-items:flex-start;justify-content:center;text-align:center;padding:20px;padding-top:120px}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.20),rgba(0,0,0,.35));display:flex;align-items:flex-end;justify-content:center;text-align:center;padding:20px;padding-bottom:120px}
 .lotus-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none}
 .lotus{position:absolute;width:120px;opacity:.12;animation:floatLotus 22s linear infinite;border-radius:18px;filter:saturate(.9)}
 .lotus:nth-child(1){left:8%;animation-duration:26s}
@@ -60,6 +60,7 @@ nav a:hover{color:#8b1e2d;background:#f2d9df}
 .calendar-cell strong{display:block;margin-bottom:4px}
 .calendar-cell.has-event{background:#e3f2fd}
 .calendar-event{display:block;background:#f0f8ff;color:#1565c0;font-size:12px;padding:3px 6px;border-radius:6px;margin-top:4px}
+.signup-btn{display:inline-block;background:#1565c0;color:#fff;border:none;border-radius:4px;cursor:pointer}
 .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
 .gallery figure{margin:0;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.08)}
 .gallery img{width:100%;height:180px;object-fit:cover;display:block}
@@ -78,13 +79,12 @@ footer{background:#5f1220;color:#fff;text-align:center;padding:28px}
 @media(max-width:600px){
 body{background-attachment:scroll}
 .topbar{font-size:12px;padding:7px 12px;text-align:center}
-header{position:sticky;top:0}
 .header-inner{padding:10px 12px}
 .logo{font-size:21px;line-height:1.3;text-align:center}
 nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}
 nav a{font-size:13px;padding:9px 8px;text-align:center}
 .hero-main{height:46vh;min-height:260px}
-.hero-overlay{padding:14px;padding-top:60px}
+.hero-overlay{padding:14px;padding-bottom:80px}
 .hero-text h1{font-size:30px;letter-spacing:2px}
 .hero-text p{font-size:15px}
 .container{padding:28px 12px;border-radius:16px;margin-top:12px;margin-bottom:12px}
@@ -114,6 +114,9 @@ nav a{font-size:13px;padding:9px 8px;text-align:center}
 .donate{padding:36px 14px}
 .btn{padding:11px 20px;font-size:14px}
 .lightbox img{max-width:95vw;max-height:80vh}
+.contact p{font-size:14px;word-break:break-word}
+.contact a{font-size:13px;color:#007bff;text-decoration:none}
+.contact a:hover{text-decoration:underline}
 }
 @media(max-width:480px){
 nav{grid-template-columns:1fr 1fr}
@@ -307,8 +310,8 @@ nav{grid-template-columns:1fr 1fr}
   <div class="card">
     <p><b>地址</b><br>新北市板橋區縣民大道三段147號1樓</p>
     <p><b>電話</b><br>02-8252-4394</p>
-    <p><b>釋湛願 Facebook</b><br>https://www.facebook.com/share/16sT24hJuj/ <img src="釋湛願FB.jpg" alt="釋湛願 QR Code" style="width:60px;height:60px;vertical-align:middle;margin-left:10px;border-radius:6px;"></p>
-    <p><b>觀音琉璃道場 Facebook</b><br>https://www.facebook.com/share/1DBZfuQkHE/ <img src="觀音琉璃道場FB.jpg" alt="觀音琉璃道場 QR Code" style="width:60px;height:60px;vertical-align:middle;margin-left:10px;border-radius:6px;"></p>
+    <p><b>釋湛願 Facebook</b><br><a href="https://www.facebook.com/share/16sT24hJuj/" target="_blank">https://www.facebook.com/share/16sT24hJuj/</a> <img src="釋湛願FB.jpg" alt="釋湛願 QR Code" style="width:60px;height:60px;vertical-align:middle;margin-left:10px;border-radius:6px;"></p>
+    <p><b>觀音琉璃道場 Facebook</b><br><a href="https://www.facebook.com/share/1DBZfuQkHE/" target="_blank">https://www.facebook.com/share/1DBZfuQkHE/</a> <img src="觀音琉璃道場FB.jpg" alt="觀音琉璃道場 QR Code" style="width:60px;height:60px;vertical-align:middle;margin-left:10px;border-radius:6px;"></p>
   </div>
 </section>
 
@@ -420,11 +423,14 @@ function renderCalendar(){
     if(recurringEvents[dateStr] && !dayEvents.includes(recurringEvents[dateStr])) dayEvents.push(recurringEvents[dateStr]);
     if(dayEvents.length){
       html += dayEvents.map(item => `<div class="calendar-event">${item}</div>`).join('');
+      // 添加報名按鈕
+      html += `<button class="signup-btn" data-date="${dateStr}" style="margin-top:6px;padding:3px 6px;font-size:11px;">我要報名</button>`;
       cell.classList.add('has-event');
     }
     cell.innerHTML=html;
     cal.appendChild(cell);
   }
+  bindSignupButtons();
 }
 function nextMonth(){current.setMonth(current.getMonth()+1);renderCalendar();}
 function prevMonth(){current.setMonth(current.getMonth()-1);renderCalendar();}
@@ -439,6 +445,16 @@ function closeLightbox(event){if(event.target.id==='lightbox' || event.target.cl
 document.addEventListener('keydown',(event)=>{if(event.key==='Escape'){document.getElementById('lightbox').classList.remove('open');}});
 renderCalendar();
 setupLightbox();
+// 报名按钮监听
+function bindSignupButtons(){
+  document.querySelectorAll('.signup-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const date=btn.getAttribute('data-date');
+      window.location.href=`event-signup.html?date=${date}`;
+    });
+  });
+}
+bindSignupButtons();
 </script>
 
 </body>
