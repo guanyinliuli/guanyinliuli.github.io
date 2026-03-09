@@ -9,12 +9,23 @@
 body{font-family:"Noto Sans TC",sans-serif;margin:0;background:#f6f7fb;color:#333;line-height:1.7}
 .topbar{background:#e9edf7;padding:8px 20px;font-size:13px;text-align:right}
 header{background:#fff;border-bottom:1px solid #e5e5e5;position:sticky;top:0;z-index:20}
-.header-inner{max-width:1280px;margin:auto;padding:12px 18px}
+.header-inner{max-width:1280px;margin:auto;padding:12px 18px;position:relative}
 .header-top{display:flex;align-items:center;justify-content:center}
 .logo{font-size:28px;font-weight:700;color:#8b1e2d;letter-spacing:1px}
-nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:12px}
+/* hide original nav and use sidebar menu instead */
+nav{display:none}
 nav a{text-decoration:none;color:#333;font-weight:500;font-size:14px;white-space:nowrap;padding:8px 12px;border-radius:999px;background:#f7ebee}
 nav a:hover{color:#8b1e2d;background:#f2d9df}
+/* hamburger button */
+.menu-btn{position:absolute;top:14px;left:18px;z-index:25;background:none;border:none;cursor:pointer;display:flex;flex-direction:column;justify-content:center;padding:4px}
+.menu-btn span{display:block;width:26px;height:3px;background:#333;margin:4px 0;transition:0.4s}
+/* sidebar styles */
+#sidebar{width:0;position:fixed;top:0;left:0;height:100%;overflow-x:hidden;overflow-y:auto;transition:0.4s ease-in-out;padding-top:80px;background:linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);box-shadow:4px 0 20px rgba(0,0,0,.3);z-index:30;border-radius:0 12px 12px 0}
+#sidebar a{padding:12px 28px;text-decoration:none;font-size:18px;color:#333;display:block;transition:0.3s ease;font-family:"KaiTi","楷體",serif;border-bottom:1px solid rgba(0,0,0,.05);word-break:break-all}
+#sidebar a:hover{background:linear-gradient(90deg, #8b1e2d 0%, #c23c53 100%);color:#fff;transform:translateX(5px);box-shadow:2px 0 8px rgba(0,0,0,.2)}
+#sidebar .closebtn{position:absolute;top:12px;right:20px;font-size:30px;cursor:pointer;color:#8b1e2d;transition:0.2s}
+#sidebar .closebtn:hover{color:#c23c53}
+
 .hero{position:relative}
 .hero-main{width:100%;height:68vh;min-height:380px;object-fit:cover;display:block}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.20),rgba(0,0,0,.35));display:flex;align-items:flex-end;justify-content:center;text-align:center;padding:20px;padding-bottom:80px}
@@ -139,9 +150,16 @@ nav{grid-template-columns:1fr 1fr}
 
 <header>
   <div class="header-inner">
+    <!-- hamburger menu button -->
+    <button class="menu-btn" id="menuBtn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
     <div class="header-top">
       <div class="logo">觀音琉璃道場</div>
     </div>
+    <!-- hidden original nav for fallback -->
     <nav>
       <a href="#home">首頁</a>
       <a href="#about">道場介紹</a>
@@ -159,6 +177,25 @@ nav{grid-template-columns:1fr 1fr}
     </nav>
   </div>
 </header>
+
+<!-- sidebar navigation -->
+<aside id="sidebar">
+  <a href="javascript:void(0)" class="closebtn" id="closeBtn">&times;</a>
+  <a href="#home">首頁</a>
+  <a href="#about">道場介紹</a>
+  <a href="#master">創辦人湛願法師</a>
+  <a href="#news">最新公告</a>
+  <a href="#events">法會活動</a>
+  <a href="#calendar-section">法會行事曆</a>
+  <a href="activity-gallery.html">活動照片</a>
+  <a href="#practice">念佛禪修與靜坐</a>
+  <a href="#plaque">消災與超薦牌位</a>
+  <a href="#release">放生</a>
+  <a href="#lamp">點燈</a>
+  <a href="#charity">慈善基金</a>
+  <a href="#contact">聯絡我們</a>
+  <a href="#traffic">交通資訊</a>
+</aside>
 
 <section class="hero" id="home">
   <div class="lotus-bg">
@@ -300,7 +337,7 @@ nav{grid-template-columns:1fr 1fr}
 </section>
 
 <section class="container" id="charity">
-  <div class="section-title"><h2>慈善基金</h2><p>慈善基金主要用於下列公益與護持項目：</p></div>
+  <div class="section-title"><h2>慈善基金</h2><p>慈善基金主要用於下列護持項目：</p></div>
   <div class="card"><ol class="info-list"><li>濟貧</li><li>建寺、修繕佛像</li></ol></div>
 </section>
 
@@ -309,7 +346,7 @@ nav{grid-template-columns:1fr 1fr}
 <section class="container contact" id="contact">
   <div class="section-title"><h2>聯絡我們</h2></div>
   <div class="card">
-    <p><b>地址</b><br>新北市板橋區縣民大道三段147號1樓</p>
+    <p><b>地址</b><br>新北市板橋區縣民大道三段147號</p>
     <p><b>電話</b><br>02-8252-4394</p>
     <p><b>釋湛願 Facebook</b><br><a href="https://www.facebook.com/share/16sT24hJuj/" target="_blank">https://www.facebook.com/share/16sT24hJuj/</a> <img src="釋湛願FB.jpg" alt="釋湛願 QR Code" style="width:60px;height:60px;vertical-align:middle;margin-left:10px;border-radius:6px;"></p>
     <p><b>觀音琉璃道場 Facebook</b><br><a href="https://www.facebook.com/share/1DBZfuQkHE/" target="_blank">https://www.facebook.com/share/1DBZfuQkHE/</a> <img src="觀音琉璃道場FB.jpg" alt="觀音琉璃道場 QR Code" style="width:60px;height:60px;vertical-align:middle;margin-left:10px;border-radius:6px;"></p>
@@ -446,6 +483,24 @@ function closeLightbox(event){if(event.target.id==='lightbox' || event.target.cl
 document.addEventListener('keydown',(event)=>{if(event.key==='Escape'){document.getElementById('lightbox').classList.remove('open');}});
 renderCalendar();
 setupLightbox();
+
+// sidebar toggle with auto close
+let sidebarTimer = null;
+function openSidebar(){
+  const sb = document.getElementById('sidebar');
+  if(!sb) return;
+  sb.style.width = '220px';
+  if(sidebarTimer) clearTimeout(sidebarTimer);
+  sidebarTimer = setTimeout(closeSidebar,10000);
+}
+function closeSidebar(){
+  const sb = document.getElementById('sidebar');
+  if(sb) sb.style.width = '0';
+  if(sidebarTimer){clearTimeout(sidebarTimer);sidebarTimer=null;}
+}
+document.getElementById('menuBtn').addEventListener('click',openSidebar);
+document.getElementById('closeBtn').addEventListener('click',closeSidebar);
+
 // 报名按钮监听
 function bindSignupButtons(){
   document.querySelectorAll('.signup-btn').forEach(btn=>{
