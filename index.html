@@ -4,14 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>觀音琉璃道場</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
-body{font-family:"Noto Sans TC",sans-serif;margin:0;background:#f6f7fb;color:#333;line-height:1.7}
-.topbar{background:#e9edf7;padding:8px 20px;font-size:13px;text-align:right}
+body{font-family:"Noto Serif TC",serif;margin:0;background:#f6f7fb;color:#333;line-height:1.7}
+.topbar{background:#e9edf7;padding:8px 0;font-size:13px;overflow:hidden;white-space:nowrap}
+.topbar-track{display:inline-flex;align-items:center;gap:42px;white-space:nowrap;font-weight:700;animation:topbarMarquee 24s linear infinite;padding-left:100%}
+.topbar-time{color:#c62828;font-weight:700}
+.topbar-link{display:inline-block;color:#333;text-decoration:none}
+.topbar-link:hover{text-decoration:underline}
+@keyframes topbarMarquee{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
 header{background:#fff;border-bottom:1px solid #e5e5e5;position:sticky;top:0;z-index:20}
 .header-inner{max-width:1280px;margin:auto;padding:12px 18px;position:relative}
 .header-top{display:flex;align-items:center;justify-content:center}
-.logo{font-size:28px;font-weight:700;color:#8b1e2d;letter-spacing:1px}
+.logo{font-size:28px;font-weight:700;color:#8b1e2d;letter-spacing:1px;display:flex;align-items:center;gap:45px}
+.logo img{height:65px;width:auto;display:block}
 /* hide original nav and use sidebar menu instead */
 nav{display:none}
 nav a{text-decoration:none;color:#333;font-weight:500;font-size:14px;white-space:nowrap;padding:8px 12px;border-radius:999px;background:#f7ebee}
@@ -21,7 +27,7 @@ nav a:hover{color:#8b1e2d;background:#f2d9df}
 .menu-btn span{display:block;width:26px;height:3px;background:#333;margin:4px 0;transition:0.4s}
 /* sidebar styles */
 #sidebar{width:0;position:fixed;top:0;left:0;height:100%;overflow-x:hidden;overflow-y:auto;transition:0.4s ease-in-out;padding-top:80px;background:linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);box-shadow:4px 0 20px rgba(0,0,0,.3);z-index:30;border-radius:0 12px 12px 0}
-#sidebar a{padding:12px 28px;text-decoration:none;font-size:18px;color:#333;display:block;transition:0.3s ease;font-family:"KaiTi","楷體",serif;border-bottom:1px solid rgba(0,0,0,.05);word-break:break-all}
+#sidebar a{padding:12px 28px;text-decoration:none;font-size:16px;color:#333;display:block;transition:0.3s ease;font-family:"KaiTi","楷體",serif;border-bottom:1px solid rgba(0,0,0,.05);word-break:break-all}
 #sidebar a:hover{background:linear-gradient(90deg, #8b1e2d 0%, #c23c53 100%);color:#fff;transform:translateX(5px);box-shadow:2px 0 8px rgba(0,0,0,.2)}
 #sidebar .closebtn{position:absolute;top:12px;right:20px;font-size:30px;cursor:pointer;color:#8b1e2d;transition:0.2s}
 #sidebar .closebtn:hover{color:#c23c53}
@@ -41,17 +47,23 @@ nav a:hover{color:#8b1e2d;background:#f2d9df}
 .hero-text{color:#fff;max-width:900px;line-height:1.1;animation:fadeInUp 2s ease-out}
 .hero-text h1{font-size:52px;margin:0 0 6px;animation:goldGlow 3.2s ease-in-out infinite}
 .hero-text p{margin:0;line-height:1.2}
-.container{max-width:1200px;margin:auto;padding:56px 20px;border-radius:22px;margin-top:18px;margin-bottom:18px}
-#about{background:rgba(255,248,240,0.9)}
+.container{max-width:1200px;margin:auto;padding:56px 20px;border-radius:0;margin-top:18px;margin-bottom:18px}
+#about{background-image:linear-gradient(rgba(255,255,255,.74),rgba(255,255,255,.74)),url("背景底圖.jpg");background-size:cover;background-position:center;background-repeat:no-repeat}
 #master{background:rgba(248,245,255,0.9)}
-#news{background:rgba(255,245,247,0.92)}
-#events{background:rgba(255,250,245,0.92)}
+#news{background-image:linear-gradient(rgba(255,255,255,.76),rgba(255,255,255,.76)),url("背景底圖.jpg");background-size:cover;background-position:center;background-repeat:no-repeat}
+#events{background-image:linear-gradient(rgba(255,255,255,.76),rgba(255,255,255,.76)),url("背景底圖.jpg");background-size:cover;background-position:center;background-repeat:no-repeat}
 #calendar-section{background:rgba(245,250,255,0.92)}
-#practice{background:rgba(247,252,245,0.92)}
+#practice{background-image:linear-gradient(rgba(255,255,255,.76),rgba(255,255,255,.76)),url("背景底圖.jpg");background-size:cover;background-position:center;background-repeat:no-repeat}
 #plaque{background:rgba(255,248,235,0.92)}
 #release{background:rgba(240,250,245,0.92)}
 #lamp{background:rgba(255,248,240,0.92)}
 #charity{background:rgba(248,245,240,0.92)}
+#charity .charity-body{display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap}
+#charity .charity-text{margin:0;font-size:22px;color:#555;white-space:nowrap}
+#charity .charity-btn{display:inline-block;background:#8b1e2d;color:#fff;padding:8px 18px;border-radius:8px;text-decoration:none;font-weight:700}
+#charity .charity-btn:hover{background:#c23c53}
+#charity .info-list{padding-left:0;list-style-position:inside}
+#charity .info-list li{font-size:20px;line-height:1.5}
 #contact{background:rgba(245,247,252,0.94)}
 #traffic{background:rgba(255,253,248,0.9)}
 .section-title{text-align:center;margin-bottom:34px}
@@ -59,6 +71,8 @@ nav a:hover{color:#8b1e2d;background:#f2d9df}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
 .card{background:#fff;border-radius:14px;padding:26px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
 .news-item{border-bottom:1px solid #eee;padding:18px 22px}.news-item:last-child{border-bottom:none}.date{color:#888;font-size:13px;margin-bottom:6px}
+.news-btn{display:inline-block;background:#8b1e2d;color:#fff;padding:6px 16px;border-radius:6px;text-decoration:none;font-size:13px;margin-top:8px;transition:background 0.3s}
+.news-btn:hover{background:#c23c53}
 .event{background:#fff7f7;border-left:5px solid #c23c53;padding:18px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.05)}
 .event h3{margin:0 0 10px}
 .calendar-wrap{background:#fff;border-radius:14px;padding:26px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
@@ -85,12 +99,21 @@ nav a:hover{color:#8b1e2d;background:#f2d9df}
 .qr-card{background:#fff;border-radius:12px;padding:10px;box-shadow:0 6px 18px rgba(0,0,0,.06);text-align:center}
 .qr-card img{width:100px;height:100px;object-fit:contain;background:#fff}
 .qr-card p{font-size:13px;margin:8px 0 0;color:#8b1e2d;font-weight:600}
-footer{background:#5f1220;color:#fff;text-align:center;padding:28px}
+footer{background:#1f5ea8;color:#fff;text-align:center;padding:28px}
 .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.82);display:none;align-items:center;justify-content:center;padding:20px;z-index:9999}.lightbox.open{display:flex}.lightbox img{max-width:min(92vw,1100px);max-height:88vh;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.35)}.lightbox-close{position:absolute;top:18px;right:22px;background:#fff;color:#8b1e2d;border:none;border-radius:999px;width:42px;height:42px;font-size:24px;cursor:pointer}
 .small-note{font-size:13px;color:#666;text-align:center;margin-top:12px}
+@keyframes aboutTextSlideIn{0%{opacity:0;transform:translateX(-36px)}100%{opacity:1;transform:translateX(0)}}
+#about .card h3,#about .card p{opacity:0;animation:aboutTextSlideIn .9s ease forwards}
+#about .card:nth-child(1) h3{animation-delay:.1s}
+#about .card:nth-child(1) p{animation-delay:.28s}
+#about .card:nth-child(2) h3{animation-delay:.45s}
+#about .card:nth-child(2) p{animation-delay:.62s}
+#about .card:nth-child(3) h3{animation-delay:.78s}
+#about .card:nth-child(3) p{animation-delay:.95s}
 @media(max-width:600px){
 body{background-attachment:scroll}
-.topbar{font-size:12px;padding:7px 12px;text-align:center}
+.topbar{font-size:12px}
+.topbar-track{gap:30px}
 .header-inner{padding:10px 12px}
 .logo{font-size:21px;line-height:1.3;text-align:center}
 nav{display:none}
@@ -99,7 +122,7 @@ nav a{font-size:12px;padding:6px 6px;text-align:center}
 .hero-overlay{padding:14px;padding-bottom:30px}
 .hero-text h1{font-size:30px;letter-spacing:2px}
 .hero-text p{font-size:15px}
-.container{padding:28px 12px;border-radius:16px;margin-top:12px;margin-bottom:12px}
+.container{padding:28px 12px;border-radius:0;margin-top:12px;margin-bottom:12px}
 .section-title{margin-bottom:20px}
 .section-title h2{font-size:24px}
 .section-title p{font-size:14px}
@@ -120,10 +143,13 @@ nav a{font-size:12px;padding:6px 6px;text-align:center}
 .gallery figcaption{font-size:13px;padding:8px 10px}
 .info-list{padding-left:18px;line-height:1.3}
 .info-list li{margin-bottom:6px}
+#charity .charity-text{font-size:18px}
+#charity .charity-btn{padding:7px 14px;font-size:22px}
+#charity .info-list li{font-size:18px}
 .qr-grid{grid-template-columns:1fr 1fr;gap:10px}
 .qr-card{padding:8px}
 .qr-card img{width:84px;height:84px}
-.donate{padding:36px 14px}
+.donate{padding:36px 20px}
 .btn{padding:11px 20px;font-size:14px}
 .lightbox img{max-width:95vw;max-height:80vh}
 .contact p{font-size:14px;word-break:break-word}
@@ -146,7 +172,12 @@ nav{display:none}
 </head>
 <body>
 
-<div class="topbar">歡迎蒞臨觀音琉璃道場官方網站</div>
+<div class="topbar">
+  <div class="topbar-track">
+    <a class="topbar-link topbar-signup" href="#">快訊｜<span class="topbar-time">3/29(日)下午1點半</span> 清明孝親報恩，【冥陽兩利三時繫念大法會】。(備有超薦牌位)，歡迎十方信眾報名參加！</a>
+    <a class="topbar-link topbar-signup" href="#" aria-hidden="true">快訊｜<span class="topbar-time">3/29(日)下午1點半</span> 清明孝親報恩，【冥陽兩利三時繫念大法會】。(備有超薦牌位)，歡迎十方信眾報名參加！</a>
+  </div>
+</div>
 
 <header>
   <div class="header-inner">
@@ -157,20 +188,20 @@ nav{display:none}
       <span></span>
     </button>
     <div class="header-top">
-      <div class="logo">觀音琉璃道場</div>
+      <div class="logo"><img src="logo.png" alt="">觀音琉璃道場</div>
     </div>
     <!-- hidden original nav for fallback -->
     <nav>
       <a href="#home">首頁</a>
       <a href="#about">道場介紹</a>
-      <a href="#master">創辦人湛願法師</a>
+      <a href="master.html">創辦人湛願法師</a>
       <a href="#news">最新公告</a>
       <a href="#events">法會活動</a>
       <a href="activity-gallery.html">活動照片</a>
       <a href="#practice">念佛禪修與靜坐</a>
-      <a href="#plaque">消災與超薦牌位</a>
-      <a href="#release">放生</a>
-      <a href="#lamp">點燈</a>
+      <a href="plaque.html">消災與超薦牌位</a>
+      <a href="release.html">放生</a>
+      <a href="lamp.html">點燈</a>
       <a href="#charity">慈善基金</a>
       <a href="#contact">聯絡我們</a>
       <a href="#traffic">交通資訊</a>
@@ -183,15 +214,15 @@ nav{display:none}
   <a href="javascript:void(0)" class="closebtn" id="closeBtn">&times;</a>
   <a href="#home">首頁</a>
   <a href="#about">道場介紹</a>
-  <a href="#master">創辦人湛願法師</a>
+  <a href="master.html">創辦人湛願法師</a>
   <a href="#news">最新公告</a>
   <a href="#events">法會活動</a>
   <a href="#calendar-section">法會行事曆</a>
   <a href="activity-gallery.html">活動照片</a>
   <a href="#practice">念佛禪修與靜坐</a>
-  <a href="#plaque">消災與超薦牌位</a>
-  <a href="#release">放生</a>
-  <a href="#lamp">點燈</a>
+  <a href="plaque.html">消災與超薦牌位</a>
+  <a href="release.html">放生</a>
+  <a href="lamp.html">點燈</a>
   <a href="#charity">慈善基金</a>
   <a href="#contact">聯絡我們</a>
   <a href="#traffic">交通資訊</a>
@@ -204,7 +235,7 @@ nav{display:none}
     <img class="lotus" src="pexels-emma-tu-7250485.jpg" alt="">
     <img class="lotus" src="pexels-emma-tu-7250485.jpg" alt="">
   </div>
-  <img class="hero-main" src="道場.jpg" alt="觀音琉璃道場">
+  <img class="hero-main" src="主畫面.png?v=20260310" alt="觀音琉璃道場">
   <div class="hero-overlay">
     <div class="hero-text">
       <h1 style="color:#FFD700;letter-spacing:4px;">觀音琉璃道場</h1>
@@ -235,26 +266,7 @@ nav{display:none}
   </div>
 </section>
 
-<section class="container" id="master">
-  <div class="section-title">
-    <h2>創辦人湛願法師</h2>
-    <p>湛願法師經歷與身影</p>
-  </div>
-  <div class="grid">
-    <div class="card">
-      <h3>法師經歷</h3>
-      <p></p>
-    </div>
-    <div class="card">
-      <h3>法師身影</h3>
-      <div class="gallery">
-        <figure><img src="法師照1.jpg" alt="法師身影"><figcaption>湛願法師</figcaption></figure>
-        <figure><img src="法師照2.jpg" alt="法師身影"><figcaption>湛願法師</figcaption></figure>
-        <figure><img src="法師照3.jpg" alt="法師身影"><figcaption>湛願法師</figcaption></figure>
-      </div>
-    </div>
-  </div>
-</section>
+
 
 <section class="container" id="news">
   <div class="section-title">
@@ -262,18 +274,18 @@ nav{display:none}
     <p>道場近期訊息與護持事項</p>
   </div>
   <div class="card" style="padding:0">
-    <div class="news-item"><div class="date">2026 / 03 / 05</div><p>3/19(四)早上9點 共修藥師經，佛前大供暨放生。</p></div>
-    <div class="news-item"><div class="date">2026 / 03 / 05</div><p>3/29(日)下午1點半 清明孝親報恩，冥陽兩利三時繫念大法會。(備有超薦牌位)</p></div>
-    <div class="news-item"><div class="date">2026 / 03 / 05</div><p>2026年度佛前消災祈福光明燈祿位年繳、半年繳登記。</p><p>（道場每逢農曆初一、十五共修及法會，三寶加被，宣疏迴向護法大德，佛光注照、本命元辰。）</p></div>
-    <div class="news-item"><div class="date">2026 / 03 / 05</div><p>為病苦者點燈（藥師經云：生病之人連續49日，日燃49燈，可得藥師琉璃光如來不可思議之加持力。）</p><p>為往生者點燈49日，可蒙佛光接引。</p></div>
-    <div class="news-item"><div class="date">2026 / 03 / 05</div><p>為現世者、病苦者放生，可消刀兵劫、消災免難。</p><p>為往生者放生，可累積往生福德資糧。</p></div>
-  </div
+    <div class="news-item"><div class="date">2026 / 03 / 05</div><p>【初一十五共修】</p><p>3/19(四)早上9點 共修藥師經，佛前大供暨放生。</p></div>
+    <div class="news-item"><div class="date">2026 / 03 / 05</div><p>【清明孝親報恩法會】</p><p>3/29(日)下午1點半 清明孝親報恩，冥陽兩利三時繫念大法會。(備有超薦牌位)</p></div>
+    <div class="news-item"><div class="date">2026 / 03 / 05</div><p>【消災祈福活動】</p><p>2026年度【佛前消災祈福光明燈禄位】年繳、半年繳登記。</p><p>（道場每逢農曆初一、十五共修及法會，三寶加被，宣疏迴向護法大德，佛光注照、本命元辰。）</p><a href="#contact" class="news-btn">欲知詳情</a></div>
+    <div class="news-item"><div class="date">2026 / 03 / 05</div><p>【點燈活動】</p><p>為病苦者點燈（藥師經云：生病之人連續49日，日燃49燈，可得藥師琉璃光如來不可思議之加持力。）</p><p>為往生者點燈49日，可蒙佛光接引。</p><a href="#contact" class="news-btn">欲知詳情</a></div>
+    <div class="news-item"><div class="date">2026 / 03 / 05</div><p>【放生活動】</p><p>為現世者、病苦者放生，可消刀兵劫、消災免難。</p><p>為往生者放生，可累積往生福德資糎。</p><a href="#contact" class="news-btn">欲知詳情</a></div>
+  </div>
 </section>
 
 <section class="container" id="events">
   <div class="section-title"><h2>法會活動</h2><p>年度共修與重要法會</p></div>
   <div class="grid">
-    <div class="event"><h3>每逢農曆初一、十五共修</h3><p>誦經祈福、│禮懺、念佛繞佛、靜坐、佛前大供、放生。</p></div>
+    <div class="event"><h3>每逢農曆初一、十五共修</h3><p>誦經祈福、禮懺、念佛繞佛、靜坐、佛前大供暨放生。</p></div>
     <div class="event"><h3>佛菩薩聖誕及成道日法會</h3><p>（備有消災或超薦牌位）</p><p>禮懺、誦經、祈福回向，增長福慧資糧。</p></div>
     <div class="event"><h3>中元普渡</h3><p>（備有超薦牌位）</p><p>瑜伽焰口法會，冥陽兩利、廣結善緣。</p></div>
   </div>
@@ -297,48 +309,26 @@ nav{display:none}
   </div>
 </section>
 
-<section class="container" id="plaque">
-  <div class="section-title" style="margin-top:20px"><p>消災與超薦壇城照片</p></div>
-  <div class="gallery">
-    <figure><img src="消災壇城1.jpg" alt="消災壇城"><figcaption>消災壇城</figcaption></figure>
-    <figure><img src="消災壇城2.jpg" alt="消災壇城"><figcaption>消災壇城</figcaption></figure>
-    <figure><img src="超薦壇城1.jpg" alt="超薦壇城"><figcaption>超薦壇城</figcaption></figure>
-    <figure><img src="超薦壇城2.jpg" alt="超薦壇城"><figcaption>超薦壇城</figcaption></figure>
-    <figure><img src="超薦壇城3.jpg" alt="超薦壇城"><figcaption>超薦壇城</figcaption></figure>
-  </div>
-  <div class="section-title"><h2>消災與超薦牌位</h2><p>消災與超薦牌位意義（舉辦法會時，可隨喜護持填寫）</p></div>
-  <div class="grid">
-    <div class="event"><h3>消災牌位</h3><p>祈求現世平安，身體健康、事業順利、福慧增上。</p></div>
-    <div class="event"><h3>超薦牌位</h3><p>超渡亡靈、歷代祖先、累劫累世冤親債主、墮胎嬰靈，領受功德，往生善趣，增加福報。</p></div>
-  </div>
-</section>
 
-<section class="container" id="release">
-  <div class="section-title"><h2>放生</h2><p>放生功德利益</p></div>
-  <div class="card" style="margin-bottom:24px;"><ol class="info-list"><li>長壽健康</li><li>多子宜男</li><li>諸佛歡喜</li><li>物類感恩</li><li>無諸災難</li><li>得生天上</li></ol></div>
-  <div class="section-title" style="margin-bottom:20px;"><p>放生活動照片</p></div>
-  <div class="gallery">
-    <figure><img src="放生3.jpg" alt="放生活動照片一"><figcaption>放生</figcaption></figure>
-    <figure><img src="放生1.jpg" alt="放生活動照片二"><figcaption>放生</figcaption></figure>
-    <figure><img src="放生2.jpg" alt="放生活動照片三"><figcaption>放生</figcaption></figure>
-  </div>
-</section>
 
-<section class="container" id="lamp">
-  <div class="section-title"><h2>點燈</h2><p>點燈功德利益</p></div>
-  <div class="card" style="margin-bottom:24px;"><ol class="info-list"><li>宛如明燈一般地照亮世間</li><li>眼睛沒有疾病</li><li>容易證得天眼通</li><li>分辨善惡的智慧</li><li>不會發生糊塗昏暗的事情</li><li>不易受到外在事物所迷惑</li><li>不會出生在幽暗昏庸的地方</li><li>有大福報</li><li>命終生天，尤其是往生忉利天</li><li>速證涅槃</li></ol></div>
-  <div class="section-title" style="margin-bottom:20px;"><p>點燈活動照片</p></div>
-  <div class="gallery">
-    <figure><img src="點燈1.jpg" alt="點燈活動照片一"><figcaption>點燈</figcaption></figure>
-    <figure><img src="點燈2.jpg" alt="點燈活動照片二"><figcaption>點燈</figcaption></figure>
-    <figure><img src="供燈1.jpg" alt="供燈照片一"><figcaption>供燈</figcaption></figure>
-    <figure><img src="供燈2.jpg" alt="供燈照片二"><figcaption>供燈</figcaption></figure>
-  </div>
-</section>
+
+
+
 
 <section class="container" id="charity">
-  <div class="section-title"><h2>慈善基金</h2><p>慈善基金主要用於下列護持項目：</p></div>
-  <div class="card"><ol class="info-list"><li>濟貧</li><li>建寺、修繕佛像</li></ol></div>
+  <div class="section-title">
+    <h2>慈善基金</h2>
+  </div>
+  <div class="charity-body">
+    <p class="charity-text">慈善基金主要用於下列護持項目：</p>
+    <ol class="info-list">
+      <li>濟貧</li>
+      <li>建寺、修繕佛像</li>
+    </ol>
+  </div>
+  <div style="text-align:center;margin-top:18px;">
+    <a href="#contact" class="charity-btn">欲知詳情</a>
+  </div>
 </section>
 
 <section class="donate"><h2>護持道場</h2><p>若您發心護持弘法活動、點燈祈福、放生、慈善或參與法會，歡迎與我們聯絡。</p><a class="btn" href="#contact">聯絡護持</a></section>
@@ -369,7 +359,7 @@ nav{display:none}
     </div>
 
     <div class="traffic-card">
-      <h3>捷運前往</h3>
+      <h3>●捷運前往</h3>
       <p>搭乘 <strong>台北捷運板南線</strong> 至 <strong>江子翠站</strong>。</p>
       <p>建議由 <strong>3號出口</strong> 出站，步行約 5～10 分鐘即可抵達。</p>
       <p>若攜帶長者或行動不便者，建議搭配地圖導航前往，亦可轉搭計程車。</p>
@@ -377,21 +367,21 @@ nav{display:none}
     </div>
     
     <div class="traffic-card">
-      <h3>公車前往</h3>
+      <h3>●公車前往</h3>
       <p>可搭乘公車667、651、604至附近站點後步行前往。</p>
       <p>建議可查詢行經 <strong>雙十路、縣民大道</strong> 一帶之公車路線。</p>
       <p>出發前可用 Google 地圖或公車動態系統確認最新班次資訊。</p>
     </div>
 
     <div class="traffic-card">
-      <h3>火車前往</h3>
+      <h3>●火車前往</h3>
       <p>搭乘至板橋火車站，下車後往『出口西 公車City Bus』方向出站，走至『公車候車區第二月台』乘車處，搭乘667 至 『海山天下社區站牌』下車，走至7-11後，對面即可看到觀音琉璃道場。</p>
       <p>搭乘至萬華火車站，下車後走至火車站前的公車站牌，搭乘667確認公車是往『板橋/板橋後站方向』，搭至『雙十路口站牌』下車，往回走即可看到觀音琉璃道場。</p>
   
     </div>
 
     <div class="traffic-card">
-      <h3>自行開車</h3>
+      <h3>●自行開車</h3>
       <p>導航請搜尋：</p>
       <p><strong>觀音琉璃道場 或 新北市板橋區縣民大道三段147號</strong><br></p>
       <p>周邊可留意路邊停車格或附近停車場，建議提早出發以利停車。</p>
@@ -425,6 +415,23 @@ nav{display:none}
 <footer><p>© 2026觀音琉璃道場</p></footer>
 
 <script>
+function setupTopbarSignupLinks(defaultYear){
+  document.querySelectorAll('.topbar-signup').forEach(link => {
+    const timeNode = link.querySelector('.topbar-time');
+    if(!timeNode) return;
+    const matched = timeNode.textContent.match(/(\d{1,2})\/(\d{1,2})/);
+    if(!matched) return;
+    const month = String(parseInt(matched[1],10)).padStart(2,'0');
+    const day = String(parseInt(matched[2],10)).padStart(2,'0');
+    link.href = `event-signup.html?date=${defaultYear}-${month}-${day}`;
+  });
+}
+
+function getQueryParam(name){
+  const params = new URLSearchParams(window.location.search);
+  return params.get(name);
+}
+
 const events={
   "2026-03-19":"農曆二月初一共修藥師經暨佛前大供與放生 早上9點",
   "2026-03-29":"清明孝親報恩冥陽兩利三時繫念大法會 下午1點半(備有超薦牌位)",
@@ -442,6 +449,15 @@ const recurringEvents={
   "2026-04-02":"共修早上9點","2026-04-17":"共修早上9點","2026-05-01":"共修早上9點","2026-05-17":"共修早上9點","2026-05-31":"共修早上9點","2026-06-15":"共修早上9點","2026-06-29":"共修早上9點","2026-07-14":"共修早上9點","2026-07-28":"共修早上9點","2026-08-13":"共修早上9點","2026-08-27":"共修早上9點","2026-09-11":"共修早上9點","2026-09-25":"共修早上9點","2026-10-10":"共修早上9點","2026-10-24":"共修早上9點","2026-11-09":"共修早上9點","2026-11-23":"共修早上9點","2026-12-09":"共修早上9點","2026-12-23":"共修早上9點"
 };
 let current=new Date(2026,2,1);
+const monthParam = getQueryParam('month');
+if(monthParam && /^\d{4}-\d{2}$/.test(monthParam)){
+  const parts = monthParam.split('-');
+  const year = parseInt(parts[0],10);
+  const month = parseInt(parts[1],10);
+  if(!Number.isNaN(year) && !Number.isNaN(month) && month>=1 && month<=12){
+    current = new Date(year,month-1,1);
+  }
+}
 function renderCalendar(){
   const year=current.getFullYear();
   const month=current.getMonth();
@@ -506,11 +522,13 @@ function bindSignupButtons(){
   document.querySelectorAll('.signup-btn').forEach(btn=>{
     btn.addEventListener('click',()=>{
       const date=btn.getAttribute('data-date');
-      window.location.href=`event-signup.html?date=${date}`;
+      const month = date ? date.slice(0,7) : '';
+      window.location.href=`event-signup.html?date=${date}&month=${month}`;
     });
   });
 }
 bindSignupButtons();
+setupTopbarSignupLinks(2026);
 </script>
 
 </body>

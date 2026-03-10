@@ -7,16 +7,25 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 body{font-family:"Noto Sans TC",sans-serif;margin:0;background:#f6f7fb;color:#333;line-height:1.7}
-.topbar{background:#e9edf7;padding:8px 20px;font-size:13px;text-align:center}
+.topbar{background:#e9edf7;padding:8px 0;font-size:13px;overflow:hidden;white-space:nowrap}
+.topbar-track{display:inline-flex;align-items:center;gap:42px;white-space:nowrap;font-weight:700;animation:topbarMarquee 24s linear infinite;padding-left:100%}
+.topbar-time{color:#c62828;font-weight:700}
+.topbar-link{display:inline-block;color:#333;text-decoration:none}
+.topbar-link:hover{text-decoration:underline}
+@keyframes topbarMarquee{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
 header{background:#fff;border-bottom:1px solid #e5e5e5;position:sticky;top:0;z-index:20}
-.header-inner{max-width:1280px;margin:auto;padding:12px 18px}
+.header-inner{max-width:1280px;margin:auto;padding:12px 18px;position:relative}
 .header-top{display:flex;align-items:center;justify-content:center}
-.logo{font-size:28px;font-weight:700;color:#8b1e2d;letter-spacing:1px}
+.logo{font-size:28px;font-weight:700;color:#8b1e2d;letter-spacing:1px;display:flex;align-items:center;gap:45px}
+.logo img{height:65px;width:auto;display:block}
 nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:12px}
 nav a{text-decoration:none;color:#333;font-weight:500;font-size:14px;white-space:nowrap;padding:8px 12px;border-radius:999px;background:#f7ebee}
 nav a:hover{color:#8b1e2d;background:#f2d9df}
 nav a.active{color:#fff;background:#8b1e2d}
-.container{max-width:1200px;margin:auto;padding:56px 20px;border-radius:22px;margin-top:18px;margin-bottom:18px}
+.quick-links{position:absolute;top:14px;right:18px;display:flex;gap:12px}
+.quick-links a{color:#1f5ea8;text-decoration:none;font-weight:600;font-size:14px}
+.quick-links a:hover{text-decoration:underline}
+.container{max-width:1200px;margin:auto;padding:56px 20px;border-radius:0;margin-top:18px;margin-bottom:18px}
 #signup-content{background:rgba(227,242,253,0.6)}
 .section-title{text-align:center;margin-bottom:34px}
 .section-title h2{font-size:32px;color:#8b1e2d;margin:0 0 8px}
@@ -25,10 +34,13 @@ nav a.active{color:#fff;background:#8b1e2d}
 .poster{max-width:600px;display:block;margin:0 auto 24px;opacity:0;}
 .form-link{display:block;text-align:center;margin-top:24px}
 .form-link a{background:#8b1e2d;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:700}
+footer{background:#1f5ea8;color:#fff;text-align:center;padding:28px}
 @media(max-width:600px){
+  .quick-links{position:static;justify-content:center;gap:10px;margin-bottom:6px}
+  .quick-links a{font-size:13px}
   nav{display:flex;justify-content:center;gap:6px;margin-top:10px}
   nav a{font-size:12px;padding:6px 6px;text-align:center}
-  .container{padding:28px 12px;border-radius:16px;margin-top:12px;margin-bottom:12px}
+  .container{padding:28px 12px;border-radius:0;margin-top:12px;margin-bottom:12px}
   .section-title h2{font-size:24px}
   .section-title p{font-size:14px}
   .poster{max-width:100%;height:auto;margin-bottom:16px}
@@ -37,14 +49,23 @@ nav a.active{color:#fff;background:#8b1e2d}
 </style>
 </head>
 <body>
-<div class="topbar">歡迎蒞臨觀音琉璃道場官方網站</div>
+<div class="topbar">
+  <div class="topbar-track">
+    <a class="topbar-link topbar-signup" href="#">快訊｜<span class="topbar-time">3/29(日)下午1點半</span> 清明孝親報恩，【冥陽兩利三時繫念大法會】。(備有超薦牌位)，歡迎十方信眾報名參加！</a>
+    <a class="topbar-link topbar-signup" href="#" aria-hidden="true">快訊｜<span class="topbar-time">3/29(日)下午1點半</span> 清明孝親報恩，【冥陽兩利三時繫念大法會】。(備有超薦牌位)，歡迎十方信眾報名參加！</a>
+  </div>
+</div>
 <header>
   <div class="header-inner">
+    <div class="quick-links">
+      <a href="index.html">回首頁</a>
+      <a href="index.html#contact">聯絡我們</a>
+    </div>
     <div class="header-top">
-      <div class="logo">觀音琉璃道場</div>
+      <div class="logo"><img src="logo.png" alt="">觀音琉璃道場</div>
     </div>
     <nav>
-      <a href="index.html#calendar-section" class="btn">回法會行事曆</a>
+      <a id="backCalendarLink" href="index.html#calendar-section" class="btn">回法會行事曆</a>
     </nav>
   </div>
 </header>
@@ -58,14 +79,34 @@ nav a.active{color:#fff;background:#8b1e2d}
 </section>
 <footer><p>© 2026觀音琉璃道場</p></footer>
 <script>
+function setupTopbarSignupLinks(defaultYear){
+  document.querySelectorAll('.topbar-signup').forEach(link => {
+    const timeNode = link.querySelector('.topbar-time');
+    if(!timeNode) return;
+    const matched = timeNode.textContent.match(/(\d{1,2})\/(\d{1,2})/);
+    if(!matched) return;
+    const month = String(parseInt(matched[1],10)).padStart(2,'0');
+    const day = String(parseInt(matched[2],10)).padStart(2,'0');
+    link.href = `event-signup.html?date=${defaultYear}-${month}-${day}`;
+  });
+}
+
 function getQueryParam(name){
   const params=new URLSearchParams(window.location.search);
   return params.get(name);
 }
 const date=getQueryParam('date');
+const monthFromQuery=getQueryParam('month');
 const subtext=document.getElementById('subtext');
 const poster=document.getElementById('poster');
 const formLink=document.getElementById('formLink');
+const backCalendarLink=document.getElementById('backCalendarLink');
+
+const monthFromDate = date && /^\d{4}-\d{2}-\d{2}$/.test(date) ? date.slice(0,7) : '';
+const targetMonth = monthFromQuery && /^\d{4}-\d{2}$/.test(monthFromQuery) ? monthFromQuery : monthFromDate;
+if(backCalendarLink && targetMonth){
+  backCalendarLink.href = `index.html?month=${targetMonth}#calendar-section`;
+}
 if(date){
   subtext.textContent=date+" 法會報名";
   // 海報與表單對應
@@ -75,7 +116,9 @@ if(date){
     '2026-04-06':'4.6海報.png',
     '2026-05-31':'5.31海報.png',
     '2026-06-28':'6.28海報.png',
-    '2026-09-13':'9.13海報.png'
+    '2026-09-13':'9.13海報.png',
+    '2026-12-12':'12.12海報.png',
+    '2026-12-13':'12.13海報.png'
   };
   const formMap={
     '2026-03-29':'https://forms.gle/ptCJJisfvYWkpr9Z7'
@@ -95,6 +138,7 @@ if(date){
 } else {
   subtext.textContent='無效日期';
 }
+setupTopbarSignupLinks(2026);
 </script>
 </body>
 </html>

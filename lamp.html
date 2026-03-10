@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>點燈 - 觀音琉璃道場</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+body{font-family:"Noto Serif TC",serif;margin:0;background:#f6f7fb;color:#333;line-height:1.7}
+.topbar{background:#e9edf7;padding:8px 0;font-size:13px;overflow:hidden;white-space:nowrap}
+.topbar-track{display:inline-flex;align-items:center;gap:42px;white-space:nowrap;font-weight:700;animation:topbarMarquee 24s linear infinite;padding-left:100%}
+.topbar-time{color:#c62828;font-weight:700}
+.topbar-link{display:inline-block;color:#333;text-decoration:none}
+.topbar-link:hover{text-decoration:underline}
+@keyframes topbarMarquee{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+header{background:#fff;border-bottom:1px solid #e5e5e5;position:sticky;top:0;z-index:20}
+.header-inner{max-width:1280px;margin:auto;padding:12px 18px;position:relative}
+.header-top{display:flex;align-items:center;justify-content:center}
+.logo{font-size:28px;font-weight:700;color:#8b1e2d;letter-spacing:1px;display:flex;align-items:center;gap:45px}
+.logo img{height:65px;width:auto;display:block}
+nav{display:none}
+nav a{text-decoration:none;color:#333;font-weight:500;font-size:14px;white-space:nowrap;padding:8px 12px;border-radius:999px;background:#f7ebee}
+nav a:hover{color:#8b1e2d;background:#f2d9df}
+.quick-links{position:absolute;top:14px;right:18px;display:flex;gap:12px}
+.quick-links a{color:#1f5ea8;text-decoration:none;font-weight:600;font-size:14px}
+.quick-links a:hover{text-decoration:underline}
+.menu-btn{position:absolute;top:14px;left:18px;z-index:25;background:none;border:none;cursor:pointer;display:flex;flex-direction:column;justify-content:center;padding:4px}
+.menu-btn span{display:block;width:26px;height:3px;background:#333;margin:4px 0;transition:0.4s}
+#sidebar{width:0;position:fixed;top:0;left:0;height:100%;overflow-x:hidden;overflow-y:auto;transition:0.4s ease-in-out;padding-top:80px;background:linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);box-shadow:4px 0 20px rgba(0,0,0,.3);z-index:30;border-radius:0 12px 12px 0}
+#sidebar a{padding:12px 28px;text-decoration:none;font-size:16px;color:#333;display:block;transition:0.3s ease;font-family:"KaiTi","楷體",serif;border-bottom:1px solid rgba(0,0,0,.05);word-break:break-all}
+#sidebar a:hover{background:linear-gradient(90deg, #8b1e2d 0%, #c23c53 100%);color:#fff;transform:translateX(5px);box-shadow:2px 0 8px rgba(0,0,0,.2)}
+#sidebar .closebtn{position:absolute;top:12px;right:20px;font-size:30px;cursor:pointer;color:#8b1e2d;transition:0.2s}
+#sidebar .closebtn:hover{color:#c23c53}
+.container{max-width:1200px;margin:auto;padding:56px 20px;border-radius:0;margin-top:18px;margin-bottom:18px;background-image:linear-gradient(rgba(255,255,255,.76),rgba(255,255,255,.76)),url("背景底圖.jpg");background-size:cover;background-position:center;background-repeat:no-repeat}
+.section-title{text-align:center;margin-bottom:34px}
+.section-title h2{font-size:32px;color:#8b1e2d;margin:0 0 8px}
+.section-title p{color:#666;margin:0}
+.card{background:#fff;border-radius:14px;padding:26px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.benefit-text-title{margin:0 0 14px 50px;color:#666;font-size:22px;font-weight:600}
+.info-list{margin:0;padding-left:70px;line-height:1.5}
+.info-list li{margin-bottom:8px;font-size:22px;font-weight:700}
+.carousel-container{position:relative;max-width:900px;margin:0 auto;overflow:hidden;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,.12)}
+.carousel-wrapper{display:flex;transition:transform 0.5s ease-in-out}
+.carousel-slide{min-width:100%;box-sizing:border-box}
+.carousel-slide img{width:100%;height:450px;object-fit:cover;display:block}
+.carousel-caption{background:rgba(139,30,45,0.85);color:#fff;text-align:center;padding:12px;font-weight:600;font-size:18px}
+.carousel-dots{text-align:center;padding:16px 0}
+.carousel-dot{display:inline-block;width:12px;height:12px;border-radius:50%;background:#ccc;margin:0 6px;cursor:pointer;transition:background 0.3s}
+.carousel-dot.active{background:#8b1e2d}
+.contact-info{background:transparent;border-radius:0;padding:0;margin-top:30px;text-align:center;box-shadow:none;font-size:18px}
+.contact-info .contact-badge{display:inline-block;background:#fff;border-radius:10px;padding:6px 12px;box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.contact-info .phone{color:#d32f2f;font-weight:700;font-size:22px}
+@media(min-width:601px){
+.benefit-row{display:flex;align-items:flex-start;justify-content:center;gap:40px;max-width:980px;margin:0 auto;transform:translateX(95px)}
+.benefit-row .benefit-card{order:2;flex:0 0 420px;background:transparent;box-shadow:none;padding:0;margin:0}
+.benefit-row .benefit-media{order:1;flex:0 0 420px}
+.benefit-row .benefit-photo-title{text-align:center;margin:0 0 14px}
+.benefit-row .carousel-container{max-width:430px;margin:0}
+.benefit-row .carousel-slide img{height:280px}
+}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.82);display:none;align-items:center;justify-content:center;padding:20px;z-index:9999}
+.lightbox.open{display:flex}
+.lightbox img{max-width:min(92vw,1100px);max-height:88vh;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.lightbox-close{position:absolute;top:18px;right:22px;background:#fff;color:#8b1e2d;border:none;border-radius:999px;width:42px;height:42px;font-size:24px;cursor:pointer}
+footer{background:#1f5ea8;color:#fff;text-align:center;padding:28px}
+@media(max-width:600px){
+.topbar{font-size:12px}
+.topbar-track{gap:30px}
+.quick-links{position:static;justify-content:center;gap:10px;margin-bottom:6px}
+.quick-links a{font-size:13px}
+.header-inner{padding:10px 12px}
+.logo{font-size:21px;line-height:1.3;text-align:center}
+.container{padding:28px 12px;border-radius:0;margin-top:12px;margin-bottom:12px}
+.section-title{margin-bottom:20px}
+.section-title h2{font-size:24px}
+.section-title p{font-size:14px}
+.card{padding:18px;border-radius:12px}
+.info-list{padding-left:18px;line-height:1.3}
+.info-list li{margin-bottom:6px;font-size:18px;font-weight:700}
+.gallery{grid-template-columns:1fr 1fr;gap:10px}
+.gallery img{height:130px}
+.gallery figcaption{font-size:13px;padding:8px 10px}
+.lightbox img{max-width:95vw;max-height:80vh}
+}
+@media(max-width:480px){
+.gallery{grid-template-columns:1fr}
+.gallery img{height:180px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-track">
+    <a class="topbar-link topbar-signup" href="#">快訊｜<span class="topbar-time">3/29(日)下午1點半</span> 清明孝親報恩，【冥陽兩利三時繫念大法會】。(備有超薦牌位)，歡迎十方信眾報名參加！</a>
+    <a class="topbar-link topbar-signup" href="#" aria-hidden="true">快訊｜<span class="topbar-time">3/29(日)下午1點半</span> 清明孝親報恩，【冥陽兩利三時繫念大法會】。(備有超薦牌位)，歡迎十方信眾報名參加！</a>
+  </div>
+</div>
+
+<header>
+  <div class="header-inner">
+    <div class="quick-links">
+      <a href="index.html">回首頁</a>
+      <a href="index.html#contact">聯絡我們</a>
+    </div>
+    <button class="menu-btn" id="menuBtn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="header-top">
+      <div class="logo"><img src="logo.png" alt="">觀音琉璃道場</div>
+    </div>
+    <nav>
+      <a href="index.html">首頁</a>
+      <a href="index.html#about">道場介紹</a>
+      <a href="master.html">創辦人湛願法師</a>
+      <a href="index.html#news">最新公告</a>
+      <a href="index.html#events">法會活動</a>
+      <a href="activity-gallery.html">活動照片</a>
+      <a href="index.html#practice">念佛禪修與靜坐</a>
+      <a href="plaque.html">消災與超薦牌位</a>
+      <a href="release.html">放生</a>
+      <a href="lamp.html">點燈</a>
+      <a href="index.html#charity">慈善基金</a>
+      <a href="index.html#contact">聯絡我們</a>
+      <a href="index.html#traffic">交通資訊</a>
+    </nav>
+  </div>
+</header>
+
+<aside id="sidebar">
+  <a href="javascript:void(0)" class="closebtn" id="closeBtn">&times;</a>
+  <a href="index.html">首頁</a>
+  <a href="index.html#about">道場介紹</a>
+  <a href="master.html">創辦人湛願法師</a>
+  <a href="index.html#news">最新公告</a>
+  <a href="index.html#events">法會活動</a>
+  <a href="index.html#calendar-section">法會行事曆</a>
+  <a href="activity-gallery.html">活動照片</a>
+  <a href="index.html#practice">念佛禪修與靜坐</a>
+  <a href="plaque.html">消災與超薦牌位</a>
+  <a href="release.html">放生</a>
+  <a href="lamp.html">點燈</a>
+  <a href="index.html#charity">慈善基金</a>
+  <a href="index.html#contact">聯絡我們</a>
+  <a href="index.html#traffic">交通資訊</a>
+</aside>
+
+<section class="container">
+  <div class="section-title">
+    <h2>點燈</h2>
+  </div>
+  <div class="benefit-row">
+    <div class="card benefit-card" style="margin-bottom:24px;">
+      <p class="benefit-text-title">點燈功德利益：</p>
+      <ol class="info-list">
+        <li>宛如明燈一般地照亮世間</li>
+        <li>眼睛沒有疾病</li>
+        <li>容易證得天眼通</li>
+        <li>分辨善惡的智慧</li>
+        <li>不會發生糊塗昏暗的事情</li>
+        <li>不易受到外在事物所迷惑</li>
+        <li>不會出生在幽暗昏庸的地方</li>
+        <li>有大福報</li>
+        <li>命終生天，尤其是往生忉利天</li>
+        <li>速證涅槃</li>
+      </ol>
+    </div>
+    <div class="benefit-media">
+      <div class="section-title benefit-photo-title" style="margin-bottom:20px;">
+        <p>點燈活動照片</p>
+      </div>
+      <div class="carousel-container">
+        <div class="carousel-wrapper" id="carouselWrapper">
+          <div class="carousel-slide">
+            <img src="點燈1.jpg" alt="點燈活動照片一">
+            <div class="carousel-caption">點燈</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="點燈2.jpg" alt="點燈活動照片二">
+            <div class="carousel-caption">點燈</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="供燈1.jpg" alt="供燈照片一">
+            <div class="carousel-caption">供燈</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="供燈2.jpg" alt="供燈照片二">
+            <div class="carousel-caption">供燈</div>
+          </div>
+        </div>
+        <div class="carousel-dots" id="carouselDots"></div>
+      </div>
+    </div>
+  </div>
+  <div class="contact-info"><span class="contact-badge">活動詳情，請洽：<span class="phone">02-8252-4394</span></span></div>
+</section>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" type="button" aria-label="關閉">×</button>
+  <img id="lightboxImg" src="" alt="放大圖片">
+</div>
+
+<footer><p>© 2026觀音琉璃道場</p></footer>
+
+<script>
+function setupTopbarSignupLinks(defaultYear){
+  document.querySelectorAll('.topbar-signup').forEach(link => {
+    const timeNode = link.querySelector('.topbar-time');
+    if(!timeNode) return;
+    const matched = timeNode.textContent.match(/(\d{1,2})\/(\d{1,2})/);
+    if(!matched) return;
+    const month = String(parseInt(matched[1],10)).padStart(2,'0');
+    const day = String(parseInt(matched[2],10)).padStart(2,'0');
+    link.href = `event-signup.html?date=${defaultYear}-${month}-${day}`;
+  });
+}
+
+// 轮播功能
+let currentSlide = 0;
+const wrapper = document.getElementById('carouselWrapper');
+const slides = wrapper.querySelectorAll('.carousel-slide');
+const totalSlides = slides.length;
+const dotsContainer = document.getElementById('carouselDots');
+
+// 创建指示点
+for(let i = 0; i < totalSlides; i++) {
+  const dot = document.createElement('span');
+  dot.className = 'carousel-dot';
+  if(i === 0) dot.classList.add('active');
+  dot.addEventListener('click', () => goToSlide(i));
+  dotsContainer.appendChild(dot);
+}
+
+function updateCarousel() {
+  wrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+  document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+    dot.classList.toggle('active', index === currentSlide);
+  });
+}
+
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % totalSlides;
+  updateCarousel();
+}
+
+function goToSlide(index) {
+  currentSlide = index;
+  updateCarousel();
+}
+
+// 自动播放
+setInterval(nextSlide, 3000);
+
+function setupLightbox(){
+  document.querySelectorAll('.carousel-slide img').forEach(img => {
+    img.style.cursor='zoom-in';
+    img.addEventListener('click', () => openLightbox(img.src, img.alt || '圖片'));
+  });
+}
+function openLightbox(src, alt){
+  const box=document.getElementById('lightbox');
+  const boxImg=document.getElementById('lightboxImg');
+  boxImg.src=src;
+  boxImg.alt=alt;
+  box.classList.add('open');
+}
+function closeLightbox(event){
+  if(event.target.id==='lightbox' || event.target.classList.contains('lightbox-close')){
+    document.getElementById('lightbox').classList.remove('open');
+  }
+}
+document.addEventListener('keydown',(event)=>{
+  if(event.key==='Escape'){
+    document.getElementById('lightbox').classList.remove('open');
+  }
+});
+setupLightbox();
+
+let sidebarTimer = null;
+function openSidebar(){
+  const sb = document.getElementById('sidebar');
+  if(!sb) return;
+  sb.style.width = '220px';
+  if(sidebarTimer) clearTimeout(sidebarTimer);
+  sidebarTimer = setTimeout(closeSidebar,10000);
+}
+function closeSidebar(){
+  const sb = document.getElementById('sidebar');
+  if(sb) sb.style.width = '0';
+  if(sidebarTimer){clearTimeout(sidebarTimer);sidebarTimer=null;}
+}
+document.getElementById('menuBtn').addEventListener('click', openSidebar);
+document.getElementById('closeBtn').addEventListener('click', closeSidebar);
+setupTopbarSignupLinks(2026);
+</script>
+
+</body>
+</html>
