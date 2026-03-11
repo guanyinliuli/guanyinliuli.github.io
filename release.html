@@ -27,9 +27,9 @@ nav a:hover{color:#8b1e2d;background:#f2d9df}
 .menu-btn{position:absolute;top:14px;left:18px;z-index:25;background:none;border:none;cursor:pointer;display:flex;flex-direction:column;justify-content:center;padding:4px}
 .menu-btn span{display:block;width:26px;height:3px;background:#333;margin:4px 0;transition:0.4s}
 #sidebar{width:0;position:fixed;top:0;left:0;height:100%;overflow-x:hidden;overflow-y:auto;transition:0.4s ease-in-out;padding-top:80px;background:linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);box-shadow:4px 0 20px rgba(0,0,0,.3);z-index:30;border-radius:0 12px 12px 0}
-#sidebar a{padding:12px 28px;text-decoration:none;font-size:16px;color:#333;display:block;transition:0.3s ease;font-family:"KaiTi","楷體",serif;border-bottom:1px solid rgba(0,0,0,.05);word-break:break-all}
+#sidebar a{padding:9px 20px;text-decoration:none;font-size:14px;line-height:1.15;color:#333;display:block;transition:0.3s ease;font-family:"KaiTi","楷體",serif;border-bottom:1px solid rgba(0,0,0,.05);word-break:normal;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #sidebar a:hover{background:linear-gradient(90deg, #8b1e2d 0%, #c23c53 100%);color:#fff;transform:translateX(5px);box-shadow:2px 0 8px rgba(0,0,0,.2)}
-#sidebar .closebtn{position:absolute;top:12px;right:20px;font-size:30px;cursor:pointer;color:#8b1e2d;transition:0.2s}
+#sidebar .closebtn{display:none}
 #sidebar .closebtn:hover{color:#c23c53}
 .container{max-width:1200px;margin:auto;padding:56px 20px;border-radius:0;margin-top:18px;margin-bottom:18px;background-image:linear-gradient(rgba(255,255,255,.76),rgba(255,255,255,.76)),url("背景底圖.jpg");background-size:cover;background-position:center;background-repeat:no-repeat}
 .section-title{text-align:center;margin-bottom:34px}
@@ -47,6 +47,10 @@ nav a:hover{color:#8b1e2d;background:#f2d9df}
 .carousel-dots{text-align:center;padding:16px 0}
 .carousel-dot{display:inline-block;width:12px;height:12px;border-radius:50%;background:#ccc;margin:0 6px;cursor:pointer;transition:background 0.3s}
 .carousel-dot.active{background:#8b1e2d}
+.carousel-arrow{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border:none;border-radius:999px;background:rgba(139,30,45,.82);color:#fff;font-size:22px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2}
+.carousel-arrow:hover{background:rgba(90,16,26,.9)}
+.carousel-prev{left:8px}
+.carousel-next{right:8px}
 .contact-info{background:transparent;border-radius:0;padding:0;margin-top:30px;text-align:center;box-shadow:none;font-size:18px}
 .contact-info .contact-badge{display:inline-flex;align-items:baseline;gap:2px;white-space:nowrap;background:#fff;border-radius:10px;padding:6px 12px;box-shadow:0 4px 12px rgba(0,0,0,.08)}
 .contact-info .phone{color:#d32f2f;font-weight:700;font-size:22px;display:block;white-space:nowrap;margin-top:2px}
@@ -72,14 +76,17 @@ footer{background:#1f5ea8;color:#fff;text-align:center;padding:28px}
 .logo img{height:54px}
 .quick-links{position:static;display:flex;flex-direction:row;justify-content:center;align-items:center;gap:10px;margin:0 0 6px;padding-left:46px;white-space:nowrap}
 .quick-links a{font-size:12px;line-height:1.2}
-.contact-info .contact-badge{font-size:14px;padding:5px 10px}
-.contact-info .phone{font-size:20px;display:block;white-space:nowrap}
+#sidebar a{font-size:13px;padding:8px 14px;line-height:1.1}
+.contact-info{padding:0 6px}
+.contact-info .contact-badge{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;max-width:100%;box-sizing:border-box;white-space:normal;word-break:break-word;font-size:13px;padding:6px 8px;line-height:1.35}
+.contact-info .phone{font-size:18px;display:block;white-space:nowrap;line-height:1.2}
 .container{padding:28px 12px;border-radius:0;margin-top:12px;margin-bottom:12px}
 .section-title{margin-bottom:20px}
 .section-title h2{font-size:24px}
 .section-title p{font-size:14px}
 .card{padding:18px;border-radius:12px}
 .carousel-slide img{height:auto;max-height:58vh;aspect-ratio:4/3;object-fit:contain;background:#fff}
+.carousel-arrow{width:30px;height:30px;font-size:18px}
 .info-list{padding-left:18px;line-height:1.3}
 .info-list li{margin-bottom:6px;font-size:18px;font-weight:700}
 .gallery{grid-template-columns:1fr 1fr;gap:10px}
@@ -138,12 +145,12 @@ footer{background:#1f5ea8;color:#fff;text-align:center;padding:28px}
 
 <aside id="sidebar">
   <a href="javascript:void(0)" class="closebtn" id="closeBtn">&times;</a>
-  <a href="index.html">首頁</a>
   <a href="index.html#about">道場介紹</a>
   <a href="master.html">創辦人湛願法師</a>
   <a href="index.html#news">最新公告</a>
   <a href="index.html#events">法會活動</a>
   <a href="index.html#calendar-section">法會行事曆</a>
+  <a href="event-video.html">法會影片</a>
   <a href="activity-gallery.html">活動照片</a>
   <a href="index.html#practice">念佛禪修與靜坐</a>
   <a href="plaque.html">消災與超薦牌位</a>
@@ -189,6 +196,8 @@ footer{background:#1f5ea8;color:#fff;text-align:center;padding:28px}
             <div class="carousel-caption">放生</div>
           </div>
         </div>
+        <button type="button" class="carousel-arrow carousel-prev" id="carouselPrev" aria-label="上一張">&#10094;</button>
+        <button type="button" class="carousel-arrow carousel-next" id="carouselNext" aria-label="下一張">&#10095;</button>
         <div class="carousel-dots" id="carouselDots"></div>
       </div>
     </div>
@@ -222,6 +231,8 @@ const wrapper = document.getElementById('carouselWrapper');
 const slides = wrapper.querySelectorAll('.carousel-slide');
 const totalSlides = slides.length;
 const dotsContainer = document.getElementById('carouselDots');
+const prevBtn = document.getElementById('carouselPrev');
+const nextBtn = document.getElementById('carouselNext');
 
 // 创建指示点
 for(let i = 0; i < totalSlides; i++) {
@@ -244,13 +255,34 @@ function nextSlide() {
   updateCarousel();
 }
 
+function prevSlide() {
+  currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+  updateCarousel();
+}
+
 function goToSlide(index) {
   currentSlide = index;
   updateCarousel();
 }
 
 // 自动播放
-setInterval(nextSlide, 3000);
+let autoPlayTimer = setInterval(nextSlide, 3000);
+function restartAutoPlay(){
+  clearInterval(autoPlayTimer);
+  autoPlayTimer = setInterval(nextSlide, 3000);
+}
+if(prevBtn){
+  prevBtn.addEventListener('click', () => {
+    prevSlide();
+    restartAutoPlay();
+  });
+}
+if(nextBtn){
+  nextBtn.addEventListener('click', () => {
+    nextSlide();
+    restartAutoPlay();
+  });
+}
 
 function setupLightbox(){
   document.querySelectorAll('.carousel-slide img').forEach(img => {

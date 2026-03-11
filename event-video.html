@@ -33,8 +33,9 @@ nav a:hover{color:#8b1e2d;background:#f2d9df}
 .section-title p{color:#666;margin:0}
 .video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
 .video-card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
-.video-link{display:block;border-radius:10px;overflow:hidden}
+.video-link{position:relative;display:block;border-radius:10px;overflow:hidden}
 .video-thumb{width:100%;aspect-ratio:16/9;object-fit:contain;border-radius:10px;background:#000;display:block}
+.video-overlay{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
 .video-title{margin:12px 0 6px;color:#8b1e2d;font-size:18px}
 .video-desc{margin:0;color:#555;font-size:15px}
 .note-card{margin-top:24px;background:#fff;border-left:5px solid #c23c53;border-radius:10px;padding:14px 16px;box-shadow:0 6px 18px rgba(0,0,0,.05)}
@@ -121,8 +122,9 @@ header{position:static}
 
   <div class="video-grid">
     <article class="video-card">
-      <a class="video-link" href="https://youtu.be/FjiePy5voqE?si=dFKVIBOlQpykrMLn" target="_blank" rel="noopener noreferrer">
+      <a class="video-link" href="https://www.youtube.com/channel/UCxfS7AvbuxHlSCRzkGfV-NA" target="_blank" rel="noopener noreferrer">
         <img class="video-thumb" src="https://img.youtube.com/vi/FjiePy5voqE/hqdefault.jpg" alt="法會影片 YouTube 縮圖">
+        <img class="video-overlay" src="youtube.png" alt="" aria-hidden="true">
       </a>
       <h3 class="video-title">法會影片一</h3>
       <p class="video-desc">點擊圖片即可前往 YouTube 觀看影片。</p>
