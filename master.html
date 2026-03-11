@@ -24,9 +24,9 @@ nav a:hover{color:#8b1e2d;background:#f2d9df}
 .menu-btn{position:absolute;top:14px;left:18px;z-index:25;background:none;border:none;cursor:pointer;display:flex;flex-direction:column;justify-content:center;padding:4px}
 .menu-btn span{display:block;width:26px;height:3px;background:#333;margin:4px 0;transition:0.4s}
 #sidebar{width:0;position:fixed;top:0;left:0;height:100%;overflow-x:hidden;overflow-y:auto;transition:0.4s ease-in-out;padding-top:80px;background:linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);box-shadow:4px 0 20px rgba(0,0,0,.3);z-index:30;border-radius:0 12px 12px 0}
-#sidebar a{padding:12px 28px;text-decoration:none;font-size:16px;color:#333;display:block;transition:0.3s ease;font-family:"KaiTi","楷體",serif;border-bottom:1px solid rgba(0,0,0,.05);word-break:break-all}
+#sidebar a{padding:9px 20px;text-decoration:none;font-size:14px;line-height:1.15;color:#333;display:block;transition:0.3s ease;font-family:"KaiTi","楷體",serif;border-bottom:1px solid rgba(0,0,0,.05);word-break:normal;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #sidebar a:hover{background:linear-gradient(90deg, #8b1e2d 0%, #c23c53 100%);color:#fff;transform:translateX(5px);box-shadow:2px 0 8px rgba(0,0,0,.2)}
-#sidebar .closebtn{position:absolute;top:12px;right:20px;font-size:30px;cursor:pointer;color:#8b1e2d;transition:0.2s}
+#sidebar .closebtn{display:none}
 #sidebar .closebtn:hover{color:#c23c53}
 .container{max-width:1200px;margin:auto;padding:56px 20px;border-radius:0;margin-top:18px;margin-bottom:18px;background:rgba(248,245,255,0.9)}
 .section-title{text-align:center;margin-bottom:34px}
@@ -47,7 +47,10 @@ footer{background:#1f5ea8;color:#fff;text-align:center;padding:28px}
 .topbar{font-size:12px}
 .topbar-track{gap:30px}
 .header-inner{padding:10px 12px}
-.logo{font-size:21px;line-height:1.3;text-align:center}
+.header-top{justify-content:flex-start;padding-left:54px;padding-right:6px}
+.logo{font-size:20px;line-height:1.25;text-align:center;gap:8px}
+.logo img{height:54px}
+#sidebar a{font-size:13px;padding:8px 14px;line-height:1.1}
 .container{padding:28px 12px;border-radius:0;margin-top:12px;margin-bottom:12px}
 .section-title{margin-bottom:20px}
 .section-title h2{font-size:24px}
@@ -104,12 +107,12 @@ footer{background:#1f5ea8;color:#fff;text-align:center;padding:28px}
 
 <aside id="sidebar">
   <a href="javascript:void(0)" class="closebtn" id="closeBtn">&times;</a>
-  <a href="index.html">首頁</a>
   <a href="index.html#about">道場介紹</a>
   <a href="master.html">創辦人湛願法師</a>
   <a href="index.html#news">最新公告</a>
   <a href="index.html#events">法會活動</a>
   <a href="index.html#calendar-section">法會行事曆</a>
+  <a href="event-video.html">法會影片</a>
   <a href="activity-gallery.html">活動照片</a>
   <a href="index.html#practice">念佛禪修與靜坐</a>
   <a href="plaque.html">消災與超薦牌位</a>

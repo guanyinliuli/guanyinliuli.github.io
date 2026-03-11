@@ -48,8 +48,8 @@ nav a:hover{color:#8b1e2d;background:#f2d9df}
 .carousel-dot{display:inline-block;width:12px;height:12px;border-radius:50%;background:#ccc;margin:0 6px;cursor:pointer;transition:background 0.3s}
 .carousel-dot.active{background:#8b1e2d}
 .contact-info{background:transparent;border-radius:0;padding:0;margin-top:30px;text-align:center;box-shadow:none;font-size:18px}
-.contact-info .contact-badge{display:inline-block;background:#fff;border-radius:10px;padding:6px 12px;box-shadow:0 4px 12px rgba(0,0,0,.08)}
-.contact-info .phone{color:#d32f2f;font-weight:700;font-size:22px}
+.contact-info .contact-badge{display:inline-flex;align-items:baseline;gap:2px;white-space:nowrap;background:#fff;border-radius:10px;padding:6px 12px;box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.contact-info .phone{color:#d32f2f;font-weight:700;font-size:22px;display:block;white-space:nowrap;margin-top:2px}
 @media(min-width:601px){
 .benefit-row{display:flex;align-items:flex-start;justify-content:center;gap:40px;max-width:980px;margin:0 auto;transform:translateX(95px)}
 .benefit-row .benefit-card{order:2;flex:0 0 420px;background:transparent;box-shadow:none;padding:0;margin:0}
@@ -67,11 +67,13 @@ footer{background:#1f5ea8;color:#fff;text-align:center;padding:28px}
 .topbar{font-size:12px}
 .topbar-track{gap:30px}
 .header-inner{padding:10px 12px}
-.header-top{justify-content:flex-start;padding-left:54px;padding-right:84px}
+.header-top{justify-content:flex-start;padding-left:54px;padding-right:6px}
 .logo{font-size:20px;line-height:1.3;text-align:center;gap:12px}
 .logo img{height:54px}
-.quick-links{position:absolute;top:8px;right:10px;flex-direction:column;align-items:flex-end;gap:2px;margin:0}
+.quick-links{position:static;display:flex;flex-direction:row;justify-content:center;align-items:center;gap:10px;margin:0 0 6px;padding-left:46px;white-space:nowrap}
 .quick-links a{font-size:12px;line-height:1.2}
+.contact-info .contact-badge{font-size:14px;padding:5px 10px}
+.contact-info .phone{font-size:20px;display:block;white-space:nowrap}
 .container{padding:28px 12px;border-radius:0;margin-top:12px;margin-bottom:12px}
 .section-title{margin-bottom:20px}
 .section-title h2{font-size:24px}
