@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>創辦人湛願法師 - 觀音琉璃道場</title>
+<title>法會影片 - 觀音琉璃道場</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 body{font-family:"Noto Serif TC",serif;margin:0;background:#f6f7fb;color:#333;line-height:1.7}
@@ -24,44 +24,36 @@ nav a:hover{color:#8b1e2d;background:#f2d9df}
 .menu-btn{position:absolute;top:14px;left:18px;z-index:25;background:none;border:none;cursor:pointer;display:flex;flex-direction:column;justify-content:center;padding:4px}
 .menu-btn span{display:block;width:26px;height:3px;background:#333;margin:4px 0;transition:0.4s}
 #sidebar{width:0;position:fixed;top:0;left:0;height:100%;overflow-x:hidden;overflow-y:auto;transition:0.4s ease-in-out;padding-top:80px;background:linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);box-shadow:4px 0 20px rgba(0,0,0,.3);z-index:30;border-radius:0 12px 12px 0}
-#sidebar a{padding:12px 28px;text-decoration:none;font-size:16px;color:#333;display:block;transition:0.3s ease;font-family:"KaiTi","楷體",serif;border-bottom:1px solid rgba(0,0,0,.05);word-break:break-all}
+#sidebar a{padding:9px 20px;text-decoration:none;font-size:14px;line-height:1.15;color:#333;display:block;transition:0.3s ease;font-family:"KaiTi","楷體",serif;border-bottom:1px solid rgba(0,0,0,.05);word-break:normal;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #sidebar a:hover{background:linear-gradient(90deg, #8b1e2d 0%, #c23c53 100%);color:#fff;transform:translateX(5px);box-shadow:2px 0 8px rgba(0,0,0,.2)}
-#sidebar .closebtn{position:absolute;top:12px;right:20px;font-size:30px;cursor:pointer;color:#8b1e2d;transition:0.2s}
-#sidebar .closebtn:hover{color:#c23c53}
-.container{max-width:1200px;margin:auto;padding:56px 20px;border-radius:0;margin-top:18px;margin-bottom:18px;background:rgba(248,245,255,0.9)}
+#sidebar .closebtn{display:none}
+.container{max-width:1200px;margin:auto;padding:56px 20px;border-radius:0;margin-top:18px;margin-bottom:18px;background:rgba(245,250,255,0.95)}
 .section-title{text-align:center;margin-bottom:34px}
 .section-title h2{font-size:32px;color:#8b1e2d;margin:0 0 8px}
 .section-title p{color:#666;margin:0}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
-.card{background:#fff;border-radius:14px;padding:26px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
-.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
-.gallery figure{margin:0;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.08)}
-.gallery img{width:100%;height:180px;object-fit:cover;display:block;cursor:zoom-in}
-.gallery figcaption{padding:10px 12px;font-weight:600;color:#8b1e2d;text-align:center}
-.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.82);display:none;align-items:center;justify-content:center;padding:20px;z-index:9999}
-.lightbox.open{display:flex}
-.lightbox img{max-width:min(92vw,1100px);max-height:88vh;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
-.lightbox-close{position:absolute;top:18px;right:22px;background:#fff;color:#8b1e2d;border:none;border-radius:999px;width:42px;height:42px;font-size:24px;cursor:pointer}
+.video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.video-card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.video-link{display:block;border-radius:10px;overflow:hidden}
+.video-thumb{width:100%;aspect-ratio:16/9;object-fit:contain;border-radius:10px;background:#000;display:block}
+.video-title{margin:12px 0 6px;color:#8b1e2d;font-size:18px}
+.video-desc{margin:0;color:#555;font-size:15px}
+.note-card{margin-top:24px;background:#fff;border-left:5px solid #c23c53;border-radius:10px;padding:14px 16px;box-shadow:0 6px 18px rgba(0,0,0,.05)}
 footer{background:#1f5ea8;color:#fff;text-align:center;padding:28px}
 @media(max-width:600px){
 .topbar{font-size:12px}
 .topbar-track{gap:30px}
+header{position:static}
 .header-inner{padding:10px 12px}
-.logo{font-size:21px;line-height:1.3;text-align:center}
+.header-top{justify-content:flex-start;padding-left:54px}
+.logo{font-size:20px;line-height:1.3;text-align:center;gap:8px}
+.logo img{height:54px}
+#sidebar a{font-size:13px;padding:8px 14px;line-height:1.1}
 .container{padding:28px 12px;border-radius:0;margin-top:12px;margin-bottom:12px}
 .section-title{margin-bottom:20px}
 .section-title h2{font-size:24px}
 .section-title p{font-size:14px}
-.grid{grid-template-columns:1fr;gap:14px}
-.card{padding:18px;border-radius:12px}
-.gallery{grid-template-columns:1fr 1fr;gap:10px}
-.gallery img{height:130px}
-.gallery figcaption{font-size:13px;padding:8px 10px}
-.lightbox img{max-width:95vw;max-height:80vh}
-}
-@media(max-width:480px){
-.gallery{grid-template-columns:1fr}
-.gallery img{height:180px}
+.video-title{font-size:17px}
+.video-desc{font-size:14px}
 }
 </style>
 </head>
@@ -90,6 +82,7 @@ footer{background:#1f5ea8;color:#fff;text-align:center;padding:28px}
       <a href="master.html">創辦人湛願法師</a>
       <a href="index.html#news">最新公告</a>
       <a href="index.html#events">法會活動</a>
+      <a href="event-video.html">法會影片</a>
       <a href="activity-gallery.html">活動照片</a>
       <a href="index.html#practice">念佛禪修與靜坐</a>
       <a href="plaque.html">消災與超薦牌位</a>
@@ -104,12 +97,12 @@ footer{background:#1f5ea8;color:#fff;text-align:center;padding:28px}
 
 <aside id="sidebar">
   <a href="javascript:void(0)" class="closebtn" id="closeBtn">&times;</a>
-  <a href="index.html">首頁</a>
   <a href="index.html#about">道場介紹</a>
   <a href="master.html">創辦人湛願法師</a>
   <a href="index.html#news">最新公告</a>
   <a href="index.html#events">法會活動</a>
   <a href="index.html#calendar-section">法會行事曆</a>
+  <a href="event-video.html">法會影片</a>
   <a href="activity-gallery.html">活動照片</a>
   <a href="index.html#practice">念佛禪修與靜坐</a>
   <a href="plaque.html">消災與超薦牌位</a>
@@ -122,33 +115,32 @@ footer{background:#1f5ea8;color:#fff;text-align:center;padding:28px}
 
 <section class="container">
   <div class="section-title">
-    <h2>創辦人湛願法師</h2>
-    <p>湛願法師經歷與身影</p>
+    <h2>法會影片</h2>
+    <p>法會開示與共修影片專區</p>
   </div>
-  <div class="grid">
-    <div class="card">
-      <h3>法師經歷</h3>
-      <p></p>
-    </div>
-    <div class="card">
-      <h3>法師身影</h3>
-      <div class="gallery">
-        <figure><img src="法師照1.jpg" alt="法師身影"><figcaption>湛願法師</figcaption></figure>
-        <figure><img src="法師照2.jpg" alt="法師身影"><figcaption>湛願法師</figcaption></figure>
-        <figure><img src="法師照3.jpg" alt="法師身影"><figcaption>湛願法師</figcaption></figure>
-      </div>
-    </div>
-    <div class="card">
-      <h3>法師梵唄</h3>
-      <p>法師梵唄內容持續整理中，歡迎隨時回來關注最新更新。</p>
-    </div>
-  </div>
-</section>
 
-<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
-  <button class="lightbox-close" type="button" aria-label="關閉">×</button>
-  <img id="lightboxImg" src="" alt="放大圖片">
-</div>
+  <div class="video-grid">
+    <article class="video-card">
+      <a class="video-link" href="https://youtu.be/FjiePy5voqE?si=dFKVIBOlQpykrMLn" target="_blank" rel="noopener noreferrer">
+        <img class="video-thumb" src="https://img.youtube.com/vi/FjiePy5voqE/hqdefault.jpg" alt="法會影片 YouTube 縮圖">
+      </a>
+      <h3 class="video-title">法會影片一</h3>
+      <p class="video-desc">點擊圖片即可前往 YouTube 觀看影片。</p>
+    </article>
+    <article class="video-card">
+      <img class="video-thumb" src="主畫面.png" alt="法會影片封面">
+      <h3 class="video-title">法會影片二</h3>
+      <p class="video-desc">影片連結整理中，後續將陸續上架。</p>
+    </article>
+    <article class="video-card">
+      <img class="video-thumb" src="主畫面.png" alt="法會影片封面">
+      <h3 class="video-title">法會影片三</h3>
+      <p class="video-desc">影片連結整理中，後續將陸續上架。</p>
+    </article>
+  </div>
+
+  <div class="note-card">若有指定要先上架的法會影片，歡迎與道場聯繫，我們會優先整理更新。</div>
+</section>
 
 <footer><p>© 2026觀音琉璃道場</p></footer>
 
@@ -165,31 +157,6 @@ function setupTopbarSignupLinks(defaultYear){
   });
 }
 
-function setupLightbox(){
-  document.querySelectorAll('.gallery img').forEach(img => {
-    img.style.cursor='zoom-in';
-    img.addEventListener('click', () => openLightbox(img.src, img.alt || '圖片'));
-  });
-}
-function openLightbox(src, alt){
-  const box=document.getElementById('lightbox');
-  const boxImg=document.getElementById('lightboxImg');
-  boxImg.src=src;
-  boxImg.alt=alt;
-  box.classList.add('open');
-}
-function closeLightbox(event){
-  if(event.target.id==='lightbox' || event.target.classList.contains('lightbox-close')){
-    document.getElementById('lightbox').classList.remove('open');
-  }
-}
-document.addEventListener('keydown',(event)=>{
-  if(event.key==='Escape'){
-    document.getElementById('lightbox').classList.remove('open');
-  }
-});
-setupLightbox();
-
 let sidebarTimer = null;
 function openSidebar(){
   const sb = document.getElementById('sidebar');
@@ -203,10 +170,9 @@ function closeSidebar(){
   if(sb) sb.style.width = '0';
   if(sidebarTimer){clearTimeout(sidebarTimer);sidebarTimer=null;}
 }
-document.getElementById('menuBtn').addEventListener('click', openSidebar);
-document.getElementById('closeBtn').addEventListener('click', closeSidebar);
-document.querySelectorAll('#sidebar a:not(.closebtn)').forEach(link=>{
-  link.addEventListener('click', closeSidebar);
+document.getElementById('menuBtn').addEventListener('click',openSidebar);
+document.querySelectorAll('#sidebar a').forEach(link=>{
+  link.addEventListener('click',closeSidebar);
 });
 setupTopbarSignupLinks(2026);
 </script>

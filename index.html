@@ -12,7 +12,10 @@ body{font-family:"Noto Serif TC",serif;margin:0;background:#f6f7fb;color:#333;li
 .topbar-time{color:#c62828;font-weight:700}
 .topbar-link{display:inline-block;color:#333;text-decoration:none}
 .topbar-link:hover{text-decoration:underline}
+.topbar-note{display:block;text-align:center;margin-top:4px;font-size:12px;font-weight:700;color:#8b1e2d;white-space:normal;line-height:1.15;animation:topbarNoteBlink 1.15s ease-in-out infinite}
+.topbar-note::before{content:"▲";display:block;font-size:10px;line-height:1;color:#c23c53;margin-bottom:2px}
 @keyframes topbarMarquee{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+@keyframes topbarNoteBlink{0%,100%{opacity:1;transform:translateY(0)}50%{opacity:.35;transform:translateY(-1px)}}
 header{background:#fff;border-bottom:1px solid #e5e5e5;position:sticky;top:0;z-index:20}
 .header-inner{max-width:1280px;margin:auto;padding:12px 18px;position:relative}
 .header-top{display:flex;align-items:center;justify-content:center}
@@ -27,9 +30,9 @@ nav a:hover{color:#8b1e2d;background:#f2d9df}
 .menu-btn span{display:block;width:26px;height:3px;background:#333;margin:4px 0;transition:0.4s}
 /* sidebar styles */
 #sidebar{width:0;position:fixed;top:0;left:0;height:100%;overflow-x:hidden;overflow-y:auto;transition:0.4s ease-in-out;padding-top:80px;background:linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);box-shadow:4px 0 20px rgba(0,0,0,.3);z-index:30;border-radius:0 12px 12px 0}
-#sidebar a{padding:12px 28px;text-decoration:none;font-size:16px;color:#333;display:block;transition:0.3s ease;font-family:"KaiTi","楷體",serif;border-bottom:1px solid rgba(0,0,0,.05);word-break:break-all}
+#sidebar a{padding:9px 20px;text-decoration:none;font-size:14px;line-height:1.15;color:#333;display:block;transition:0.3s ease;font-family:"KaiTi","楷體",serif;border-bottom:1px solid rgba(0,0,0,.05);word-break:normal;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #sidebar a:hover{background:linear-gradient(90deg, #8b1e2d 0%, #c23c53 100%);color:#fff;transform:translateX(5px);box-shadow:2px 0 8px rgba(0,0,0,.2)}
-#sidebar .closebtn{position:absolute;top:12px;right:20px;font-size:30px;cursor:pointer;color:#8b1e2d;transition:0.2s}
+#sidebar .closebtn{display:none}
 #sidebar .closebtn:hover{color:#c23c53}
 
 .hero{position:relative}
@@ -65,7 +68,24 @@ nav a:hover{color:#8b1e2d;background:#f2d9df}
 #charity .info-list{padding-left:0;list-style-position:inside}
 #charity .info-list li{font-size:20px;line-height:1.5}
 #contact{background:rgba(245,247,252,0.94)}
+#contact .section-title{position:relative;padding-top:4px}
+#contact .news-shortcut{position:absolute;top:0;right:0;display:inline-block;padding:4px 10px;border-radius:999px;border:1px solid #d8c4ca;background:#fff;color:#8b1e2d;text-decoration:none;font-size:14px;font-weight:700;line-height:1.2}
+#contact .news-shortcut:hover{background:#8b1e2d;color:#fff}
+#contact .news-shortcut-note{position:absolute;top:30px;right:0;font-size:12px;color:#8b1e2d;line-height:1.2}
 #traffic{background:rgba(255,253,248,0.9)}
+#home-promo{background:rgba(255,250,242,0.92)}
+.home-promo-carousel{position:relative;max-width:980px;margin:0 auto;overflow:hidden;border-radius:14px;background:#fff;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.home-promo-track{display:flex;transition:transform .55s ease}
+.home-promo-slide{min-width:100%;box-sizing:border-box}
+.home-promo-slide a{display:block}
+.home-promo-slide img{width:100%;height:clamp(220px,42vw,430px);object-fit:contain;background:#fff;display:block}
+.home-promo-arrow{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border:none;border-radius:999px;background:rgba(139,30,45,.82);color:#fff;font-size:24px;line-height:1;cursor:pointer;z-index:2;display:flex;align-items:center;justify-content:center}
+.home-promo-arrow:hover{background:rgba(90,16,26,.9)}
+.home-promo-prev{left:10px}
+.home-promo-next{right:10px}
+.home-promo-dots{text-align:center;margin-top:14px}
+.home-promo-dots button{width:12px;height:12px;border-radius:50%;border:none;background:#cfcfcf;margin:0 5px;cursor:pointer}
+.home-promo-dots button.active{background:#8b1e2d}
 .section-title{text-align:center;margin-bottom:34px}
 .section-title h2{font-size:32px;color:#8b1e2d;margin:0 0 8px}.section-title p{color:#666;margin:0}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
@@ -112,13 +132,19 @@ footer{background:#1f5ea8;color:#fff;text-align:center;padding:28px}
 #about .card:nth-child(3) p{animation-delay:.95s}
 @media(max-width:600px){
 body{background-attachment:scroll}
+header{position:static}
 .topbar{font-size:12px}
 .topbar-track{gap:30px}
+.topbar-note{font-size:11px}
 .header-inner{padding:10px 12px}
-.logo{font-size:21px;line-height:1.3;text-align:center}
+.header-top{justify-content:flex-start;padding-left:54px}
+.logo{font-size:20px;line-height:1.3;text-align:center;gap:8px}
+.logo img{height:54px}
 nav{display:none}
 nav a{font-size:12px;padding:6px 6px;text-align:center}
+#sidebar a{font-size:13px;padding:8px 14px;line-height:1.1}
 .hero-main{height:46vh;min-height:260px}
+.hero-main{object-position:center bottom}
 .hero-overlay{padding:14px;padding-bottom:30px}
 .hero-text h1{font-size:30px;letter-spacing:2px}
 .hero-text p{font-size:15px}
@@ -131,9 +157,13 @@ nav a{font-size:12px;padding:6px 6px;text-align:center}
 .news-item{padding:14px 16px}
 .event{padding:14px}
 .calendar-wrap{padding:16px}
-.calendar-toolbar{gap:8px}
-.calendar-toolbar button{padding:8px 12px;font-size:13px}
-#monthTitle{font-size:20px}
+.calendar-toolbar{gap:4px;flex-wrap:nowrap;justify-content:space-between;align-items:center}
+.calendar-toolbar button{padding:6px 8px;font-size:11px;white-space:nowrap;line-height:1.2;flex:0 0 auto}
+#monthTitle{font-size:15px;white-space:nowrap;margin:0;flex:1;text-align:center;min-width:0}
+.home-promo-slide img{height:220px}
+.home-promo-arrow{width:40px;height:40px;font-size:21px}
+.home-promo-prev{left:8px}
+.home-promo-next{right:8px}
 .calendar-week,#calendar{grid-template-columns:repeat(2,1fr)}
 .calendar-week div:nth-child(n+3){display:none}
 .calendar-cell{min-height:92px;padding:6px}
@@ -143,9 +173,11 @@ nav a{font-size:12px;padding:6px 6px;text-align:center}
 .gallery figcaption{font-size:13px;padding:8px 10px}
 .info-list{padding-left:18px;line-height:1.3}
 .info-list li{margin-bottom:6px}
-#charity .charity-text{font-size:18px}
+#charity .charity-body{gap:10px;flex-direction:column;align-items:center}
+#charity .charity-text{font-size:15px;white-space:normal;text-align:center;line-height:1.5;max-width:100%;overflow-wrap:anywhere}
 #charity .charity-btn{padding:7px 14px;font-size:22px}
-#charity .info-list li{font-size:18px}
+#charity .info-list{width:100%;max-width:280px;margin:0 auto;padding-left:20px;list-style-position:outside;box-sizing:border-box}
+#charity .info-list li{font-size:16px;line-height:1.5;word-break:break-word}
 .qr-grid{grid-template-columns:1fr 1fr;gap:10px}
 .qr-card{padding:8px}
 .qr-card img{width:84px;height:84px}
@@ -155,12 +187,20 @@ nav a{font-size:12px;padding:6px 6px;text-align:center}
 .contact p{font-size:14px;word-break:break-word}
 .contact a{font-size:13px;color:#007bff;text-decoration:none}
 .contact a:hover{text-decoration:underline}
+#contact .news-shortcut{font-size:12px;padding:3px 8px}
+#contact .news-shortcut-note{top:26px;font-size:11px}
 }
 @media(max-width:480px){
 nav{display:none}
 .hero-main{height:40vh;min-height:220px}
+.hero-main{object-position:center bottom}
 .hero-text h1{font-size:26px}
 .hero-text p{font-size:14px}
+.home-promo-slide img{height:190px}
+.home-promo-arrow{width:34px;height:34px;font-size:18px}
+.calendar-toolbar{gap:3px}
+.calendar-toolbar button{padding:5px 6px;font-size:10px}
+#monthTitle{font-size:13px}
 .gallery{grid-template-columns:1fr}
 .gallery img{height:180px}
 .qr-grid{grid-template-columns:1fr}
@@ -177,6 +217,7 @@ nav{display:none}
     <a class="topbar-link topbar-signup" href="#">快訊｜<span class="topbar-time">3/29(日)下午1點半</span> 清明孝親報恩，【冥陽兩利三時繫念大法會】。(備有超薦牌位)，歡迎十方信眾報名參加！</a>
     <a class="topbar-link topbar-signup" href="#" aria-hidden="true">快訊｜<span class="topbar-time">3/29(日)下午1點半</span> 清明孝親報恩，【冥陽兩利三時繫念大法會】。(備有超薦牌位)，歡迎十方信眾報名參加！</a>
   </div>
+  <div class="topbar-note">快訊可以點擊</div>
 </div>
 
 <header>
@@ -197,6 +238,7 @@ nav{display:none}
       <a href="master.html">創辦人湛願法師</a>
       <a href="#news">最新公告</a>
       <a href="#events">法會活動</a>
+      <a href="event-video.html">法會影片</a>
       <a href="activity-gallery.html">活動照片</a>
       <a href="#practice">念佛禪修與靜坐</a>
       <a href="plaque.html">消災與超薦牌位</a>
@@ -212,12 +254,12 @@ nav{display:none}
 <!-- sidebar navigation -->
 <aside id="sidebar">
   <a href="javascript:void(0)" class="closebtn" id="closeBtn">&times;</a>
-  <a href="#home">首頁</a>
   <a href="#about">道場介紹</a>
   <a href="master.html">創辦人湛願法師</a>
   <a href="#news">最新公告</a>
   <a href="#events">法會活動</a>
   <a href="#calendar-section">法會行事曆</a>
+  <a href="event-video.html">法會影片</a>
   <a href="activity-gallery.html">活動照片</a>
   <a href="#practice">念佛禪修與靜坐</a>
   <a href="plaque.html">消災與超薦牌位</a>
@@ -243,6 +285,25 @@ nav{display:none}
       <p style="font-size:18px;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.55);margin-top:10px;">慈悲 ‧ 智慧 ‧ 清淨</p>
     </div>
   </div>
+</section>
+
+<section class="container" id="home-promo">
+  <div class="home-promo-carousel" id="homePromoCarousel">
+    <div class="home-promo-track" id="homePromoTrack">
+      <div class="home-promo-slide">
+        <a href="plaque.html"><img src="2026年度佛前消災光明祿位.png" alt="2026年度佛前消災光明祿位"></a>
+      </div>
+      <div class="home-promo-slide">
+        <a href="lamp.html"><img src="點亮心燈.png" alt="點亮心燈"></a>
+      </div>
+      <div class="home-promo-slide">
+        <a href="release.html"><img src="戒殺護生.png" alt="戒殺護生"></a>
+      </div>
+    </div>
+    <button type="button" class="home-promo-arrow home-promo-prev" id="homePromoPrev" aria-label="上一張">&#10094;</button>
+    <button type="button" class="home-promo-arrow home-promo-next" id="homePromoNext" aria-label="下一張">&#10095;</button>
+  </div>
+  <div class="home-promo-dots" id="homePromoDots" aria-label="活動輪播切換"></div>
 </section>
 
 <section class="container" id="about">
@@ -334,7 +395,7 @@ nav{display:none}
 <section class="donate"><h2>護持道場</h2><p>若您發心護持弘法活動、點燈祈福、放生、慈善或參與法會，歡迎與我們聯絡。</p><a class="btn" href="#contact">聯絡護持</a></section>
 
 <section class="container contact" id="contact">
-  <div class="section-title"><h2>聯絡我們</h2></div>
+  <div class="section-title"><h2>聯絡我們</h2><a class="news-shortcut" href="#news">最新公告</a><span class="news-shortcut-note">此處可以點擊</span></div>
   <div class="card">
     <p><b>地址</b><br>新北市板橋區縣民大道三段147號</p>
     <p><b>電話</b><br>02-8252-4394</p>
@@ -465,7 +526,7 @@ function renderCalendar(){
   const last=new Date(year,month+1,0);
   const cal=document.getElementById("calendar");
   cal.innerHTML="";
-  document.getElementById("monthTitle").innerText=`${year}年 ${month+1}月`;
+  document.getElementById("monthTitle").innerText=`${year}年${month+1}月`;
   for(let i=0;i<first.getDay();i++){const empty=document.createElement("div");empty.className="calendar-cell";empty.style.visibility="hidden";cal.appendChild(empty);}  
   for(let d=1;d<=last.getDate();d++){
     const dateStr=`${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
@@ -494,11 +555,75 @@ function setupLightbox(){
     img.addEventListener('click', () => openLightbox(img.src, img.alt || '圖片'));
   });
 }
+function initHomePromoCarousel(){
+  const carousel = document.getElementById('homePromoCarousel');
+  const track = document.getElementById('homePromoTrack');
+  const dotsWrap = document.getElementById('homePromoDots');
+  const prevBtn = document.getElementById('homePromoPrev');
+  const nextBtn = document.getElementById('homePromoNext');
+  if(!carousel || !track || !dotsWrap) return;
+  const slides = Array.from(track.querySelectorAll('.home-promo-slide'));
+  if(!slides.length) return;
+  let currentIndex = 0;
+  let autoTimer = null;
+
+  dotsWrap.innerHTML = slides.map((_,index)=>`<button type="button" aria-label="切換至第${index+1}張"></button>`).join('');
+
+  function updateCarousel(){
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    dotsWrap.querySelectorAll('button').forEach((dot,index)=>{
+      dot.classList.toggle('active', index===currentIndex);
+    });
+  }
+  function goTo(index){
+    currentIndex = (index + slides.length) % slides.length;
+    updateCarousel();
+  }
+  function stopAuto(){
+    if(autoTimer){clearInterval(autoTimer);autoTimer=null;}
+  }
+  function startAuto(){
+    if(autoTimer) return;
+    autoTimer = setInterval(()=>goTo(currentIndex+1),3600);
+  }
+  function restartAuto(){
+    stopAuto();
+    startAuto();
+  }
+
+  dotsWrap.querySelectorAll('button').forEach((dot,index)=>{
+    dot.addEventListener('click',()=>{
+      goTo(index);
+      restartAuto();
+    });
+  });
+  if(prevBtn){
+    prevBtn.addEventListener('click',()=>{
+      goTo(currentIndex-1);
+      restartAuto();
+    });
+  }
+  if(nextBtn){
+    nextBtn.addEventListener('click',()=>{
+      goTo(currentIndex+1);
+      restartAuto();
+    });
+  }
+
+  carousel.addEventListener('mouseenter',stopAuto);
+  carousel.addEventListener('mouseleave',startAuto);
+  carousel.addEventListener('touchstart',stopAuto,{passive:true});
+  carousel.addEventListener('touchend',restartAuto);
+
+  goTo(0);
+  startAuto();
+}
 function openLightbox(src, alt){const box=document.getElementById('lightbox');const boxImg=document.getElementById('lightboxImg');boxImg.src=src;boxImg.alt=alt;box.classList.add('open');}
 function closeLightbox(event){if(event.target.id==='lightbox' || event.target.classList.contains('lightbox-close')){document.getElementById('lightbox').classList.remove('open');}}
 document.addEventListener('keydown',(event)=>{if(event.key==='Escape'){document.getElementById('lightbox').classList.remove('open');}});
 renderCalendar();
 setupLightbox();
+initHomePromoCarousel();
 
 // sidebar toggle with auto close
 let sidebarTimer = null;
@@ -516,6 +641,9 @@ function closeSidebar(){
 }
 document.getElementById('menuBtn').addEventListener('click',openSidebar);
 document.getElementById('closeBtn').addEventListener('click',closeSidebar);
+document.querySelectorAll('#sidebar a:not(.closebtn)').forEach(link=>{
+  link.addEventListener('click',closeSidebar);
+});
 
 // 报名按钮监听
 function bindSignupButtons(){

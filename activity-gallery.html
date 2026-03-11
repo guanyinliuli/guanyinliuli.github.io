@@ -97,10 +97,12 @@ footer{background:#1f5ea8;color:#fff;text-align:center;padding:28px}
 body{background-attachment:scroll}
 .topbar{font-size:12px}
 .topbar-track{gap:30px}
-.quick-links{position:static;justify-content:center;gap:10px;margin-bottom:6px}
-.quick-links a{font-size:13px}
 .header-inner{padding:10px 12px}
-.logo{font-size:21px;line-height:1.3;text-align:center}
+.header-top{justify-content:flex-start;padding-left:54px;padding-right:84px}
+.logo{font-size:20px;line-height:1.3;text-align:center;gap:12px}
+.logo img{height:54px}
+.quick-links{position:absolute;top:8px;right:10px;flex-direction:column;align-items:flex-end;gap:2px;margin:0}
+.quick-links a{font-size:12px;line-height:1.2}
 .hero-main{height:46vh;min-height:260px}
 .hero-overlay{padding:14px;padding-bottom:30px}
 .hero-text h1{font-size:30px;letter-spacing:2px}
@@ -130,6 +132,7 @@ body{background-attachment:scroll}
     <div class="quick-links">
       <a href="index.html">回首頁</a>
       <a href="index.html#contact">聯絡我們</a>
+      <a href="index.html#news">最新公告</a>
     </div>
     <button class="menu-btn" id="menuBtn">
       <span></span>
@@ -251,6 +254,9 @@ function closeSidebar(){
 }
 document.getElementById('menuBtn').addEventListener('click', openSidebar);
 document.getElementById('closeBtn').addEventListener('click', closeSidebar);
+document.querySelectorAll('#sidebar a:not(.closebtn)').forEach(link=>{
+  link.addEventListener('click', closeSidebar);
+});
 </script>
 
 </body>

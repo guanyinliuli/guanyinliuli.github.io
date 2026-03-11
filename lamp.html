@@ -66,15 +66,18 @@ footer{background:#1f5ea8;color:#fff;text-align:center;padding:28px}
 @media(max-width:600px){
 .topbar{font-size:12px}
 .topbar-track{gap:30px}
-.quick-links{position:static;justify-content:center;gap:10px;margin-bottom:6px}
-.quick-links a{font-size:13px}
 .header-inner{padding:10px 12px}
-.logo{font-size:21px;line-height:1.3;text-align:center}
+.header-top{justify-content:flex-start;padding-left:54px;padding-right:84px}
+.logo{font-size:20px;line-height:1.3;text-align:center;gap:12px}
+.logo img{height:54px}
+.quick-links{position:absolute;top:8px;right:10px;flex-direction:column;align-items:flex-end;gap:2px;margin:0}
+.quick-links a{font-size:12px;line-height:1.2}
 .container{padding:28px 12px;border-radius:0;margin-top:12px;margin-bottom:12px}
 .section-title{margin-bottom:20px}
 .section-title h2{font-size:24px}
 .section-title p{font-size:14px}
 .card{padding:18px;border-radius:12px}
+.carousel-slide img{height:auto;max-height:58vh;aspect-ratio:4/3;object-fit:contain;background:#fff}
 .info-list{padding-left:18px;line-height:1.3}
 .info-list li{margin-bottom:6px;font-size:18px;font-weight:700}
 .gallery{grid-template-columns:1fr 1fr;gap:10px}
@@ -83,6 +86,7 @@ footer{background:#1f5ea8;color:#fff;text-align:center;padding:28px}
 .lightbox img{max-width:95vw;max-height:80vh}
 }
 @media(max-width:480px){
+.carousel-slide img{max-height:52vh}
 .gallery{grid-template-columns:1fr}
 .gallery img{height:180px}
 }
@@ -102,6 +106,7 @@ footer{background:#1f5ea8;color:#fff;text-align:center;padding:28px}
     <div class="quick-links">
       <a href="index.html">回首頁</a>
       <a href="index.html#contact">聯絡我們</a>
+      <a href="index.html#news">最新公告</a>
     </div>
     <button class="menu-btn" id="menuBtn">
       <span></span>
@@ -293,6 +298,9 @@ function closeSidebar(){
 }
 document.getElementById('menuBtn').addEventListener('click', openSidebar);
 document.getElementById('closeBtn').addEventListener('click', closeSidebar);
+document.querySelectorAll('#sidebar a:not(.closebtn)').forEach(link=>{
+  link.addEventListener('click', closeSidebar);
+});
 setupTopbarSignupLinks(2026);
 </script>
 
