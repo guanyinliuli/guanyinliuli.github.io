@@ -526,9 +526,15 @@ function renderCalendar(){
   const first=new Date(year,month,1);
   const last=new Date(year,month+1,0);
   const cal=document.getElementById("calendar");
+  const weekHeader = document.querySelector('.calendar-week');
   cal.innerHTML="";
   document.getElementById("monthTitle").innerText=`${year}年${month+1}月`;
-  for(let i=0;i<first.getDay();i++){const empty=document.createElement("div");empty.className="calendar-cell";empty.style.visibility="hidden";cal.appendChild(empty);}  
+  const isMobileListView = window.matchMedia('(max-width:768px)').matches;
+  if(weekHeader){
+    weekHeader.style.display = isMobileListView ? 'none' : 'grid';
+  }
+  const leadingEmptyCells = isMobileListView ? 0 : first.getDay();
+  for(let i=0;i<leadingEmptyCells;i++){const empty=document.createElement("div");empty.className="calendar-cell";empty.style.visibility="hidden";cal.appendChild(empty);}  
   for(let d=1;d<=last.getDate();d++){
     const dateStr=`${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
     const cell=document.createElement("div");
