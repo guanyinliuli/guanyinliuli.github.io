@@ -529,7 +529,9 @@ function renderCalendar(){
   const weekHeader = document.querySelector('.calendar-week');
   cal.innerHTML="";
   document.getElementById("monthTitle").innerText=`${year}年${month+1}月`;
-  const isMobileListView = window.matchMedia('(max-width:768px)').matches;
+  const columnTemplate = window.getComputedStyle(cal).gridTemplateColumns || '';
+  const columnCount = columnTemplate.split(' ').filter(Boolean).length;
+  const isMobileListView = columnCount === 1;
   if(weekHeader){
     weekHeader.style.display = isMobileListView ? 'none' : 'grid';
   }
