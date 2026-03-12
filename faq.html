@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>疑問釋答 - 觀音琉璃道場</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+body{font-family:"Noto Serif TC",serif;margin:0;background:#f6f7fb;color:#333;line-height:1.7}
+.topbar{background:#e9edf7;padding:8px 0;font-size:13px;overflow:hidden;white-space:nowrap}
+.topbar-track{display:inline-flex;align-items:center;gap:42px;white-space:nowrap;font-weight:700;animation:topbarMarquee 24s linear infinite;padding-left:100%}
+.topbar-time{color:#c62828;font-weight:700}
+.topbar-link{display:inline-block;color:#333;text-decoration:none}
+.topbar-link:hover{text-decoration:underline}
+@keyframes topbarMarquee{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+header{background:#fff;border-bottom:1px solid #e5e5e5;position:sticky;top:0;z-index:20}
+.header-inner{max-width:1280px;margin:auto;padding:12px 18px;position:relative}
+.header-top{display:flex;align-items:center;justify-content:center}
+.logo{font-size:28px;font-weight:700;color:#8b1e2d;letter-spacing:1px;display:flex;align-items:center;gap:45px}
+.logo img{height:65px;width:auto;display:block}
+nav{display:none}
+nav a{text-decoration:none;color:#333;font-weight:500;font-size:14px;white-space:nowrap;padding:8px 12px;border-radius:999px;background:#f7ebee}
+nav a:hover{color:#8b1e2d;background:#f2d9df}
+.quick-links{position:absolute;top:14px;right:18px;display:flex;gap:12px}
+.quick-links a{color:#1f5ea8;text-decoration:none;font-weight:600;font-size:14px}
+.quick-links a:hover{text-decoration:underline}
+.menu-btn{position:absolute;top:14px;left:18px;z-index:25;background:none;border:none;cursor:pointer;display:flex;flex-direction:column;justify-content:center;padding:4px}
+.menu-btn span{display:block;width:26px;height:3px;background:#333;margin:4px 0;transition:0.4s}
+#sidebar{width:0;position:fixed;top:0;left:0;height:100%;overflow-x:hidden;overflow-y:auto;transition:0.4s ease-in-out;padding-top:80px;background:linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);box-shadow:4px 0 20px rgba(0,0,0,.3);z-index:30;border-radius:0 12px 12px 0}
+#sidebar a{padding:9px 20px;text-decoration:none;font-size:14px;line-height:1.15;color:#333;display:block;transition:0.3s ease;font-family:"KaiTi","楷體",serif;border-bottom:1px solid rgba(0,0,0,.05);word-break:normal;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#sidebar a:hover{background:linear-gradient(90deg, #8b1e2d 0%, #c23c53 100%);color:#fff;transform:translateX(5px);box-shadow:2px 0 8px rgba(0,0,0,.2)}
+#sidebar .closebtn{display:none}
+#sidebar .closebtn:hover{color:#c23c53}
+.container{max-width:980px;margin:auto;padding:56px 20px;margin-top:18px;margin-bottom:18px;background-image:linear-gradient(rgba(255,255,255,.76),rgba(255,255,255,.76)),url("背景底圖.jpg");background-size:cover;background-position:center;background-repeat:no-repeat}
+.section-title{text-align:center;margin-bottom:28px}
+.section-title h2{font-size:32px;color:#8b1e2d;margin:0 0 8px}
+.section-title p{color:#666;margin:0}
+.faq-list{display:grid;gap:14px}
+.faq-item{background:#fff;border-radius:12px;padding:16px 18px;box-shadow:0 8px 24px rgba(0,0,0,.08);border-left:4px solid #8b1e2d}
+.faq-q{margin:0 0 8px;font-size:20px;font-weight:700;color:#8b1e2d}
+.faq-a{margin:0;font-size:18px;line-height:1.6}
+.contact-tip{margin-top:26px;text-align:center;font-size:17px}
+.contact-tip a{color:#1f5ea8;text-decoration:none;font-weight:700}
+.contact-tip a:hover{text-decoration:underline}
+footer{background:#1f5ea8;color:#fff;text-align:center;padding:28px}
+@media(max-width:600px){
+.topbar{font-size:12px}
+.topbar-track{gap:30px}
+.header-inner{padding:10px 12px}
+.header-top{justify-content:flex-start;padding-left:54px;padding-right:6px}
+.logo{font-size:20px;line-height:1.3;text-align:center;gap:12px}
+.logo img{height:54px}
+.quick-links{position:static;display:flex;flex-direction:row;justify-content:center;align-items:center;gap:10px;margin:0 0 6px;padding-left:46px;white-space:nowrap}
+.quick-links a{font-size:12px;line-height:1.2}
+#sidebar a{font-size:13px;padding:8px 14px;line-height:1.1}
+.container{padding:28px 12px;margin-top:12px;margin-bottom:12px}
+.section-title{margin-bottom:18px}
+.section-title h2{font-size:24px}
+.section-title p{font-size:14px}
+.faq-item{padding:14px 14px}
+.faq-q{font-size:18px}
+.faq-a{font-size:16px}
+.contact-tip{font-size:15px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-track">
+    <a class="topbar-link topbar-signup" href="#">快訊｜<span class="topbar-time">3/29(日)下午1點半</span> 清明孝親報恩，【冥陽兩利三時繫念大法會】。(備有超薦牌位)，歡迎十方信眾報名參加！</a>
+    <a class="topbar-link topbar-signup" href="#" aria-hidden="true">快訊｜<span class="topbar-time">3/29(日)下午1點半</span> 清明孝親報恩，【冥陽兩利三時繫念大法會】。(備有超薦牌位)，歡迎十方信眾報名參加！</a>
+  </div>
+</div>
+
+<header>
+  <div class="header-inner">
+    <div class="quick-links">
+      <a href="index.html">回首頁</a>
+      <a href="index.html#contact">聯絡我們</a>
+      <a href="index.html#news">最新公告</a>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="開啟選單">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="header-top">
+      <div class="logo"><img src="logo.png" alt="">觀音琉璃道場</div>
+    </div>
+    <nav>
+      <a href="index.html">首頁</a>
+      <a href="index.html#about">道場介紹</a>
+      <a href="master.html">創辦人湛願法師</a>
+      <a href="index.html#news">最新公告</a>
+      <a href="index.html#events">法會活動</a>
+      <a href="event-video.html">法會影片</a>
+      <a href="activity-gallery.html">活動照片</a>
+      <a href="index.html#practice">念佛禪修與靜坐</a>
+      <a href="plaque.html">消災與超薦牌位</a>
+      <a href="release.html">放生</a>
+      <a href="lamp.html">點燈</a>
+      <a href="index.html#charity">慈善基金</a>
+      <a href="faq.html">疑問釋答</a>
+      <a href="index.html#contact">聯絡我們</a>
+      <a href="index.html#traffic">交通資訊</a>
+    </nav>
+  </div>
+</header>
+
+<aside id="sidebar">
+  <a href="javascript:void(0)" class="closebtn" id="closeBtn">&times;</a>
+  <a href="index.html#about">道場介紹</a>
+  <a href="master.html">創辦人湛願法師</a>
+  <a href="index.html#news">最新公告</a>
+  <a href="index.html#events">法會活動</a>
+  <a href="index.html#calendar-section">法會行事曆</a>
+  <a href="event-video.html">法會影片</a>
+  <a href="activity-gallery.html">活動照片</a>
+  <a href="index.html#practice">念佛禪修與靜坐</a>
+  <a href="plaque.html">消災與超薦牌位</a>
+  <a href="release.html">放生</a>
+  <a href="lamp.html">點燈</a>
+  <a href="index.html#charity">慈善基金</a>
+  <a href="faq.html" style="color:#c62828;font-weight:700;">疑問釋答</a>
+  <a href="index.html#contact">聯絡我們</a>
+  <a href="index.html#traffic">交通資訊</a>
+</aside>
+
+<section class="container">
+  <div class="section-title">
+    <h2>疑問釋答</h2>
+    <p>常見問題整理，方便信眾快速查詢</p>
+  </div>
+  <div class="faq-list">
+    <article class="faq-item">
+      <p class="faq-q">Q1. 如何報名法會或共修活動？</p>
+      <p class="faq-a">可透過道場電話或最新公告中的報名資訊聯絡登記，亦可於活動當日提前到場洽詢。</p>
+    </article>
+    <article class="faq-item">
+      <p class="faq-q">Q2. 點燈有哪幾種方式？</p>
+      <p class="faq-a">可依活動公告辦理個人、闔家或特定祈願之點燈，詳細內容可至「點燈」頁面查看。</p>
+    </article>
+    <article class="faq-item">
+      <p class="faq-q">Q3. 消災與超薦牌位如何辦理？</p>
+      <p class="faq-a">可至「消災與超薦牌位」頁面查看說明，並與道場聯絡辦理登記與資料填寫。</p>
+    </article>
+    <article class="faq-item">
+      <p class="faq-q">Q4. 放生活動是否可隨喜參加？</p>
+      <p class="faq-a">歡迎隨喜參與，活動時間與集合方式以最新公告或道場通知為準。</p>
+    </article>
+    <article class="faq-item">
+      <p class="faq-q">Q5. 初一、十五共修有固定時間嗎？</p>
+      <p class="faq-a">通常安排於公告時間舉行，遇特殊節日會調整，請以最新公告為準。</p>
+    </article>
+    <article class="faq-item">
+      <p class="faq-q">Q6. 第一次到道場參加活動要準備什麼？</p>
+      <p class="faq-a">建議穿著莊重、提早報到，並依現場義工引導入座與參與流程。</p>
+    </article>
+  </div>
+  <p class="contact-tip">如有其他問題，歡迎來電洽詢：<a href="tel:0282524394">02-8252-4394</a></p>
+</section>
+
+<footer><p>© 2026觀音琉璃道場</p></footer>
+
+<script>
+function setupTopbarSignupLinks(defaultYear){
+  document.querySelectorAll('.topbar-signup').forEach(link => {
+    const timeNode = link.querySelector('.topbar-time');
+    if(!timeNode) return;
+    const matched = timeNode.textContent.match(/(\d{1,2})\/(\d{1,2})/);
+    if(!matched) return;
+    const month = String(parseInt(matched[1],10)).padStart(2,'0');
+    const day = String(parseInt(matched[2],10)).padStart(2,'0');
+    link.href = `event-signup.html?date=${defaultYear}-${month}-${day}`;
+  });
+}
+
+let sidebarTimer = null;
+function openSidebar(){
+  const sb = document.getElementById('sidebar');
+  if(!sb) return;
+  sb.style.width = '220px';
+  if(sidebarTimer) clearTimeout(sidebarTimer);
+  sidebarTimer = setTimeout(closeSidebar,10000);
+}
+function closeSidebar(){
+  const sb = document.getElementById('sidebar');
+  if(sb) sb.style.width = '0';
+  if(sidebarTimer){clearTimeout(sidebarTimer);sidebarTimer=null;}
+}
+document.getElementById('menuBtn').addEventListener('click', openSidebar);
+document.getElementById('closeBtn').addEventListener('click', closeSidebar);
+document.querySelectorAll('#sidebar a:not(.closebtn)').forEach(link=>{
+  link.addEventListener('click', closeSidebar);
+});
+setupTopbarSignupLinks(2026);
+</script>
+
+</body>
+</html>
