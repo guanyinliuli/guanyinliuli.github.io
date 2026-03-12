@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>疑問釋答 - 觀音琉璃道場</title>
+<title>法師梵唄 - 觀音琉璃道場</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 body{font-family:"Noto Serif TC",serif;margin:0;background:#f6f7fb;color:#333;line-height:1.7}
@@ -21,9 +21,6 @@ header{background:#fff;border-bottom:1px solid #e5e5e5;position:sticky;top:0;z-i
 nav{display:none}
 nav a{text-decoration:none;color:#333;font-weight:500;font-size:14px;white-space:nowrap;padding:8px 12px;border-radius:999px;background:#f7ebee}
 nav a:hover{color:#8b1e2d;background:#f2d9df}
-.quick-links{position:absolute;top:14px;right:18px;display:flex;gap:12px}
-.quick-links a{color:#1f5ea8;text-decoration:none;font-weight:600;font-size:14px}
-.quick-links a:hover{text-decoration:underline}
 .menu-btn{position:absolute;top:14px;left:18px;z-index:25;background:none;border:none;cursor:pointer;display:flex;flex-direction:column;justify-content:center;padding:4px}
 .menu-btn span{display:block;width:26px;height:3px;background:#333;margin:4px 0;transition:0.4s}
 #sidebar{width:0;position:fixed;top:0;left:0;height:100%;overflow-x:hidden;overflow-y:auto;transition:0.4s ease-in-out;padding-top:80px;background:linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);box-shadow:4px 0 20px rgba(0,0,0,.3);z-index:30;border-radius:0 12px 12px 0}
@@ -31,43 +28,49 @@ nav a:hover{color:#8b1e2d;background:#f2d9df}
 #sidebar a:hover{background:linear-gradient(90deg, #8b1e2d 0%, #c23c53 100%);color:#fff;transform:translateX(5px);box-shadow:2px 0 8px rgba(0,0,0,.2)}
 #sidebar .closebtn{display:none}
 #sidebar .closebtn:hover{color:#c23c53}
-.container{max-width:980px;margin:auto;padding:56px 20px;margin-top:18px;margin-bottom:18px;background-image:linear-gradient(rgba(255,255,255,.76),rgba(255,255,255,.76)),url("背景底圖.jpg");background-size:cover;background-position:center;background-repeat:no-repeat}
+.container{max-width:980px;margin:auto;padding:56px 20px;border-radius:0;margin-top:18px;margin-bottom:18px;background:rgba(248,245,255,0.9)}
 .section-title{text-align:center;margin-bottom:28px}
 .section-title h2{font-size:32px;color:#8b1e2d;margin:0 0 8px}
 .section-title p{color:#666;margin:0}
-.faq-list{display:grid;gap:14px}
-.faq-item{background:#fff;border-radius:12px;padding:16px 18px;box-shadow:0 8px 24px rgba(0,0,0,.08);border-left:4px solid #8b1e2d}
-.faq-q{margin:0 0 8px;font-size:20px;font-weight:700;color:#8b1e2d}
-.faq-a{margin:0;font-size:18px;line-height:1.6;font-family:"DFKai-SB","BiauKai","標楷體",serif;padding-left:1.6em}
-.faq-a-lead{color:#1f5ea8;font-weight:700;padding-left:0}
-.faq-em-red{color:#c62828;font-weight:700}
-.faq-marker{display:inline-block;min-width:3.2em;color:#1f5ea8;font-weight:700}
-.faq-a-detail{padding-left:3.2em}
-.contact-tip{margin-top:26px;text-align:center;font-size:17px}
-.contact-tip a{color:#1f5ea8;text-decoration:none;font-weight:700}
-.contact-tip a:hover{text-decoration:underline}
+.card{background:#fff;border-radius:14px;padding:26px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.card p{margin:0 0 10px}
+.back-links{display:flex;align-items:center;justify-content:flex-start;gap:10px;margin:0 0 18px;padding:0 2px}
+.back-links .home-link{color:#1f5ea8;font-weight:700;text-decoration:none;margin-right:auto;white-space:nowrap}
+.back-links .home-link:hover{text-decoration:underline}
+.share-tools{display:inline-flex;align-items:center;position:relative;flex-shrink:0}
+.share-toggle{width:36px;height:36px;border:none;border-radius:999px;background:#0d47a1;color:#fff;cursor:pointer;box-shadow:0 6px 14px rgba(0,0,0,.22);display:inline-flex;align-items:center;justify-content:center}
+.share-toggle:hover{background:#1565c0}
+.share-toggle svg{width:18px;height:18px;display:block}
+.share-icons{display:none;align-items:center;gap:8px;position:absolute;right:44px;top:50%;transform:translateY(-50%);padding:4px 6px;border-radius:999px;background:rgba(255,255,255,.96);box-shadow:0 4px 12px rgba(0,0,0,.2);z-index:3}
+.share-icons.open{display:inline-flex}
+.share-icon{width:36px;height:36px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;box-shadow:0 4px 10px rgba(0,0,0,.18);background:#0d47a1;border:none}
+.share-icon svg{width:18px;height:18px;display:block}
+.share-icon.line{background:#0d47a1}
+.share-icon.fb{background:#0d47a1}
+.share-icon.ig{background:#0d47a1}
+.share-icon:hover{background:#1565c0}
+.action-links{margin-top:16px;display:flex;flex-wrap:wrap;gap:10px}
+.action-links a{display:inline-block;padding:8px 14px;border-radius:999px;background:#8b1e2d;color:#fff;text-decoration:none;font-weight:700}
+.action-links a:hover{background:#b83449}
 footer{background:#1f5ea8;color:#fff;text-align:center;padding:28px}
 @media(max-width:600px){
 .topbar{font-size:12px}
 .topbar-track{gap:30px}
 .header-inner{padding:10px 12px}
 .header-top{justify-content:flex-start;padding-left:54px;padding-right:6px}
-.logo{font-size:20px;line-height:1.3;text-align:center;gap:12px}
+.logo{font-size:20px;line-height:1.25;text-align:center;gap:8px}
 .logo img{height:54px}
-.quick-links{position:static;display:flex;flex-direction:row;justify-content:center;align-items:center;gap:10px;margin:0 0 6px;padding-left:46px;white-space:nowrap}
-.quick-links a{font-size:12px;line-height:1.2}
 #sidebar a{font-size:13px;padding:8px 14px;line-height:1.1}
-.container{padding:28px 12px;margin-top:12px;margin-bottom:12px}
+.container{padding:28px 12px;border-radius:0;margin-top:12px;margin-bottom:12px}
 .section-title{margin-bottom:18px}
 .section-title h2{font-size:24px}
 .section-title p{font-size:14px}
-.faq-item{padding:14px 14px}
-.faq-q{font-size:18px}
-.faq-a{font-size:16px;padding-left:1.4em}
-.faq-marker{min-width:3em}
-.faq-a-detail{padding-left:3em}
-.contact-tip{font-size:15px}
-.contact-tip a{display:block;margin-top:4px;white-space:nowrap}
+.card{padding:18px}
+.back-links{gap:8px}
+.back-links .home-link{font-size:14px}
+.share-toggle,.share-icon{width:32px;height:32px}
+.share-toggle svg,.share-icon svg{width:16px;height:16px}
+.share-icons{right:40px;gap:6px;padding:3px 5px}
 }
 </style>
 </head>
@@ -82,12 +85,7 @@ footer{background:#1f5ea8;color:#fff;text-align:center;padding:28px}
 
 <header>
   <div class="header-inner">
-    <div class="quick-links">
-      <a href="index.html">回首頁</a>
-      <a href="index.html#contact">聯絡我們</a>
-      <a href="index.html#news">最新公告</a>
-    </div>
-    <button class="menu-btn" id="menuBtn" aria-label="開啟選單">
+    <button class="menu-btn" id="menuBtn">
       <span></span>
       <span></span>
       <span></span>
@@ -101,14 +99,12 @@ footer{background:#1f5ea8;color:#fff;text-align:center;padding:28px}
       <a href="master.html">創辦人湛願法師</a>
       <a href="index.html#news">最新公告</a>
       <a href="index.html#events">法會活動</a>
-      <a href="event-video.html">法會影片</a>
       <a href="activity-gallery.html">活動照片</a>
       <a href="index.html#practice">念佛禪修與靜坐</a>
       <a href="plaque.html">消災與超薦牌位</a>
       <a href="release.html">放生</a>
       <a href="lamp.html">點燈</a>
       <a href="index.html#charity">慈善基金</a>
-      <a href="faq.html">疑問釋答</a>
       <a href="index.html#contact">聯絡我們</a>
       <a href="index.html#traffic">交通資訊</a>
     </nav>
@@ -126,8 +122,8 @@ footer{background:#1f5ea8;color:#fff;text-align:center;padding:28px}
   <a href="activity-gallery.html">活動照片</a>
   <a href="index.html#practice">念佛禪修與靜坐</a>
   <a href="plaque.html">消災與超薦牌位</a>
-  <a href="release.html">放生</a>
   <a href="lamp.html">點燈</a>
+  <a href="release.html">放生</a>
   <a href="index.html#charity">慈善基金</a>
   <a href="faq.html" style="color:#c62828;font-weight:700;">疑問釋答</a>
   <a href="index.html#contact">聯絡我們</a>
@@ -136,46 +132,50 @@ footer{background:#1f5ea8;color:#fff;text-align:center;padding:28px}
 
 <section class="container">
   <div class="section-title">
-    <h2>疑問釋答</h2>
-    <p>常見問題整理，方便信眾快速查詢</p>
+    <h2>法師梵唄</h2>
+    <p>創辦人湛願法師</p>
   </div>
-  <div class="faq-list">
-    <article class="faq-item">
-      <p class="faq-q">Q1. 為什麼要超渡？</p>
-      <p class="faq-a faq-a-lead"><span class="faq-marker">(一)</span>幫助亡者離苦。</p>
-      <p class="faq-a faq-a-detail">人死後不一定立刻解脫，可能仍在六道輪迴中。透過誦經、供養、放生、行善，把功德回向給亡者，幫助祂們：<span class="faq-em-red">減少業障、得到善報、往生善道(如天道)。</span></p>
-      <p class="faq-a faq-a-lead"><span class="faq-marker">(二)</span>化解冤親債主。</p>
-      <p class="faq-a faq-a-detail">人與人之間可能有過去的因果關係。透過超渡、回向功德，可以：<span class="faq-em-red">化解過去的冤結、減少障礙、讓彼此得到安樂</span>。</p>
-      <p class="faq-a faq-a-lead"><span class="faq-marker">(三)</span>幫助無主孤魂。</p>
-      <p class="faq-a faq-a-detail">目的是幫助無人祭祀的亡魂、戰爭災難死者、流離的孤魂，讓祂們得到安慰與超生。</p>
-      </p>
+  <p class="back-links">
+    <a class="home-link" href="master.html">回創辦人首頁</a>
+    <span class="share-tools" id="shareChant">
+      <button type="button" class="share-toggle" aria-expanded="false" aria-controls="shareIconsChant" title="分享">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="6" cy="12" r="2" fill="currentColor"></circle>
+          <circle cx="18" cy="6" r="2" fill="currentColor"></circle>
+          <circle cx="18" cy="18" r="2" fill="currentColor"></circle>
+          <path d="M8 11l8-4M8 13l8 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+        </svg>
+      </button>
+      <span class="share-icons" id="shareIconsChant">
+        <a class="share-icon line" href="#" target="_blank" rel="noopener noreferrer" aria-label="分享到LINE">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3.5" y="4.5" width="17" height="13" rx="4" fill="none" stroke="currentColor" stroke-width="1.8"></rect>
+            <path d="M9 17.5l-2.6 2.7.3-2.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M8 10h8M8 13h6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
+          </svg>
+        </a>
+        <a class="share-icon fb" href="#" target="_blank" rel="noopener noreferrer" aria-label="分享到Facebook">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M14 8h-2c-.55 0-1 .45-1 1v2H9v3h2v6h3v-6h2.1l.4-3H14V9h2.6V6H14z" fill="currentColor"></path>
+          </svg>
+        </a>
+        <a class="share-icon ig" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="4" y="4" width="16" height="16" rx="4" fill="none" stroke="currentColor" stroke-width="1.8"></rect>
+            <circle cx="12" cy="12" r="3.5" fill="none" stroke="currentColor" stroke-width="1.8"></circle>
+            <circle cx="17.2" cy="6.8" r="1" fill="currentColor"></circle>
+          </svg>
+        </a>
+      </span>
+    </span>
+  </p>
+  <article class="card">
+    <p>法師梵唄內容持續整理中，歡迎隨時回來關注最新更新。</p>
+    <p>若想觀看其他法會影片，可前往下方連結。</p>
+    <div class="action-links">
+      <a href="event-video.html">前往法會影片</a>
+    </div>
   </article>
-    <article class="faq-item">
-      <p class="faq-q">Q2. 為什麼要皈依？</p>
-      <p class="faq-a">皈依是把人生的方向，安住在佛、法、僧三寶，走向覺悟與解脫的道路。</p>
-    </article>
-    <article class="faq-item">
-      <p class="faq-q">Q3. 如何幫助往生者在49天內做功德？</p>
-      <p class="faq-a">佛教觀念中，人往生後到下一世投生前，常有『中陰身』階段，大約49天，在這段期間，親友可以為亡者<span class="faq-em-red">誦經回向、供養僧眾、供佛、放生、點燈、舉辦法會、捐款寺院、做慈善、救濟貧苦、印經書</span>等等，並將此善行功德回向往生者。</p>
-    </article>
-    <article class="faq-item">
-      <p class="faq-q">Q4. 清明法會有什麼功德利益可以幫助祖先、 幫助往生者？</p>
-      <p class="faq-a">透過誦經，供佛供果供水普施活動時間與集合方式以最新公告或道場通知為準。</p>
-    </article>
-    <article class="faq-item">
-      <p class="faq-q">Q5. 為什麼要拜懺？</p>
-      <p class="faq-a">通常安排於公告時間舉行，遇特殊節日會調整，請以最新公告為準。</p>
-    </article>
-    <article class="faq-item">
-      <p class="faq-q">Q6. 誦藥師琉璃光如來本願功德經有什麼功德利益？</p>
-      <p class="faq-a">藥師經中云：復應念彼如來本願功德，讀誦此經，思惟其義，演說、開示。隨所樂求，一切皆遂；求長壽得長壽，求富饒得富饒，求官位得官位，求男女得男女。</p>
-      <p class="faq-q">Q7. 生病可以讀誦哪部經典？</p>
-      <p class="faq-a"><span class="faq-em-red">可以讀誦藥師經</span>，藥師經中云：彼藥師琉璃光如來得菩提時，由本願力，觀諸有情遇眾病苦，瘦孿、乾消、黃熱等病，或被魘魅蠱毒所中，或復短命，或時橫死，欲令是等病苦消除，所求願滿。</p>
-      <p class="faq-a"><span class="faq-em-red">亦可持藥師咒</span>，若見男子、女人有病苦者，應當一心為彼病人，常清淨澡漱，或食、或藥、或無蟲水，咒一百八遍，與彼服食，所有病苦悉皆消滅。</p>
-      <p class="faq-a"><span class="faq-em-red">亦可念誦地藏王菩薩名號萬遍</span>，地藏經云：若未來世有諸人等，衣食不足，求者乖願，或多病疾，或多凶衰，家宅不安，眷屬分散，或諸橫事多來忤身，睡夢之間多有驚怖。如是人等，聞地藏名、見地藏形，至心恭敬，念滿萬遍，是諸不如意事，漸漸消滅，即得安樂，衣食豐溢，乃至於睡夢中，悉皆安樂。</p>
-    </article>
-  </div>
-  <p class="contact-tip">如有其他問題，歡迎來電洽詢：<a href="tel:0282524394">02-8252-4394</a></p>
 </section>
 
 <footer><p>© 2026觀音琉璃道場</p></footer>
@@ -190,6 +190,33 @@ function setupTopbarSignupLinks(defaultYear){
     const month = String(parseInt(matched[1],10)).padStart(2,'0');
     const day = String(parseInt(matched[2],10)).padStart(2,'0');
     link.href = `event-signup.html?date=${defaultYear}-${month}-${day}`;
+  });
+}
+
+function setupShareTools(containerId){
+  const container = document.getElementById(containerId);
+  if(!container) return;
+  const toggle = container.querySelector('.share-toggle');
+  const icons = container.querySelector('.share-icons');
+  if(!toggle || !icons) return;
+
+  const encodedUrl = encodeURIComponent(window.location.href);
+  const lineLink = icons.querySelector('.share-icon.line');
+  const fbLink = icons.querySelector('.share-icon.fb');
+  if(lineLink) lineLink.href = `https://social-plugins.line.me/lineit/share?url=${encodedUrl}`;
+  if(fbLink) fbLink.href = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+
+  toggle.addEventListener('click', (event) => {
+    event.stopPropagation();
+    const isOpen = icons.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+
+  document.addEventListener('click', (event) => {
+    if(!container.contains(event.target)){
+      icons.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
   });
 }
 
@@ -211,6 +238,7 @@ document.getElementById('closeBtn').addEventListener('click', closeSidebar);
 document.querySelectorAll('#sidebar a:not(.closebtn)').forEach(link=>{
   link.addEventListener('click', closeSidebar);
 });
+setupShareTools('shareChant');
 setupTopbarSignupLinks(2026);
 </script>
 

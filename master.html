@@ -28,20 +28,13 @@ nav a:hover{color:#8b1e2d;background:#f2d9df}
 #sidebar a:hover{background:linear-gradient(90deg, #8b1e2d 0%, #c23c53 100%);color:#fff;transform:translateX(5px);box-shadow:2px 0 8px rgba(0,0,0,.2)}
 #sidebar .closebtn{display:none}
 #sidebar .closebtn:hover{color:#c23c53}
-.container{max-width:1200px;margin:auto;padding:56px 20px;border-radius:0;margin-top:18px;margin-bottom:18px;background:rgba(248,245,255,0.9)}
-.section-title{text-align:center;margin-bottom:34px}
-.section-title h2{font-size:32px;color:#8b1e2d;margin:0 0 8px}
-.section-title p{color:#666;margin:0}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
-.card{background:#fff;border-radius:14px;padding:26px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
-.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
-.gallery figure{margin:0;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.08)}
-.gallery img{width:100%;height:180px;object-fit:cover;display:block;cursor:zoom-in}
-.gallery figcaption{padding:10px 12px;font-weight:600;color:#8b1e2d;text-align:center}
-.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.82);display:none;align-items:center;justify-content:center;padding:20px;z-index:9999}
-.lightbox.open{display:flex}
-.lightbox img{max-width:min(92vw,1100px);max-height:88vh;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
-.lightbox-close{position:absolute;top:18px;right:22px;background:#fff;color:#8b1e2d;border:none;border-radius:999px;width:42px;height:42px;font-size:24px;cursor:pointer}
+.founder-hero{position:relative;min-height:70vh;margin:18px auto;max-width:1200px;overflow:hidden;border-radius:18px;box-shadow:0 14px 36px rgba(0,0,0,.22);background:#111}
+.hero-video{width:100%;height:100%;min-height:70vh;object-fit:cover;display:block}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(120deg,rgba(15,25,45,.7) 0%,rgba(20,20,20,.45) 45%,rgba(139,30,45,.62) 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center}
+.hero-overlay h2{margin:0 0 12px;color:#fff;font-size:40px;letter-spacing:3px;text-shadow:0 4px 16px rgba(0,0,0,.5)}
+.vertical-links{display:flex;align-items:flex-end;justify-content:center;gap:26px;margin-top:26px}
+.vertical-link{writing-mode:vertical-rl;text-orientation:upright;text-decoration:none;color:#fff;background:rgba(139,30,45,.82);border:1px solid rgba(255,255,255,.4);padding:14px 10px;font-family:"DFKai-SB","BiauKai","KaiTi","標楷體",serif;font-weight:700;letter-spacing:2px;border-radius:999px;box-shadow:0 8px 18px rgba(0,0,0,.25);transition:transform .25s ease,background .25s ease}
+.vertical-link:hover{transform:translateY(-4px);background:#b83449}
 footer{background:#1f5ea8;color:#fff;text-align:center;padding:28px}
 @media(max-width:600px){
 .topbar{font-size:12px}
@@ -51,20 +44,11 @@ footer{background:#1f5ea8;color:#fff;text-align:center;padding:28px}
 .logo{font-size:20px;line-height:1.25;text-align:center;gap:8px}
 .logo img{height:54px}
 #sidebar a{font-size:13px;padding:8px 14px;line-height:1.1}
-.container{padding:28px 12px;border-radius:0;margin-top:12px;margin-bottom:12px}
-.section-title{margin-bottom:20px}
-.section-title h2{font-size:24px}
-.section-title p{font-size:14px}
-.grid{grid-template-columns:1fr;gap:14px}
-.card{padding:18px;border-radius:12px}
-.gallery{grid-template-columns:1fr 1fr;gap:10px}
-.gallery img{height:130px}
-.gallery figcaption{font-size:13px;padding:8px 10px}
-.lightbox img{max-width:95vw;max-height:80vh}
-}
-@media(max-width:480px){
-.gallery{grid-template-columns:1fr}
-.gallery img{height:180px}
+.founder-hero{min-height:64vh;border-radius:0;margin-top:12px;margin-bottom:12px}
+.hero-video{min-height:64vh}
+.hero-overlay h2{font-size:26px;letter-spacing:2px}
+.vertical-links{gap:12px;margin-top:18px}
+.vertical-link{padding:10px 7px;font-size:14px;letter-spacing:1px}
 }
 </style>
 </head>
@@ -116,43 +100,28 @@ footer{background:#1f5ea8;color:#fff;text-align:center;padding:28px}
   <a href="activity-gallery.html">活動照片</a>
   <a href="index.html#practice">念佛禪修與靜坐</a>
   <a href="plaque.html">消災與超薦牌位</a>
-  <a href="release.html">放生</a>
   <a href="lamp.html">點燈</a>
+  <a href="release.html">放生</a>
   <a href="index.html#charity">慈善基金</a>
   <a href="faq.html" style="color:#c62828;font-weight:700;">疑問釋答</a>
   <a href="index.html#contact">聯絡我們</a>
   <a href="index.html#traffic">交通資訊</a>
 </aside>
 
-<section class="container">
-  <div class="section-title">
+<section class="founder-hero">
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="開示片頭(1).mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay">
     <h2>創辦人湛願法師</h2>
-    <p>湛願法師經歷與身影</p>
-  </div>
-  <div class="grid">
-    <div class="card">
-      <h3>法師經歷</h3>
-      <p></p>
-    </div>
-    <div class="card">
-      <h3>法師身影</h3>
-      <div class="gallery">
-        <figure><img src="法師照1.jpg" alt="法師身影"><figcaption>湛願法師</figcaption></figure>
-        <figure><img src="法師照2.jpg" alt="法師身影"><figcaption>湛願法師</figcaption></figure>
-        <figure><img src="法師照3.jpg" alt="法師身影"><figcaption>湛願法師</figcaption></figure>
-      </div>
-    </div>
-    <div class="card">
-      <h3>法師梵唄</h3>
-      <p>法師梵唄內容持續整理中，歡迎隨時回來關注最新更新。</p>
+    <div class="vertical-links">
+      <a class="vertical-link" href="master-profile.html">法師經歷</a>
+      <a class="vertical-link" href="master-gallery.html">法師身影</a>
+      <a class="vertical-link" href="master-chant.html">法師梵唄</a>
+      <a class="vertical-link" href="master-talk.html">法師開示</a>
     </div>
   </div>
 </section>
-
-<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
-  <button class="lightbox-close" type="button" aria-label="關閉">×</button>
-  <img id="lightboxImg" src="" alt="放大圖片">
-</div>
 
 <footer><p>© 2026觀音琉璃道場</p></footer>
 
@@ -168,31 +137,6 @@ function setupTopbarSignupLinks(defaultYear){
     link.href = `event-signup.html?date=${defaultYear}-${month}-${day}`;
   });
 }
-
-function setupLightbox(){
-  document.querySelectorAll('.gallery img').forEach(img => {
-    img.style.cursor='zoom-in';
-    img.addEventListener('click', () => openLightbox(img.src, img.alt || '圖片'));
-  });
-}
-function openLightbox(src, alt){
-  const box=document.getElementById('lightbox');
-  const boxImg=document.getElementById('lightboxImg');
-  boxImg.src=src;
-  boxImg.alt=alt;
-  box.classList.add('open');
-}
-function closeLightbox(event){
-  if(event.target.id==='lightbox' || event.target.classList.contains('lightbox-close')){
-    document.getElementById('lightbox').classList.remove('open');
-  }
-}
-document.addEventListener('keydown',(event)=>{
-  if(event.key==='Escape'){
-    document.getElementById('lightbox').classList.remove('open');
-  }
-});
-setupLightbox();
 
 let sidebarTimer = null;
 function openSidebar(){
