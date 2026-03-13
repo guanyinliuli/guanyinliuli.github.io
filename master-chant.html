@@ -150,14 +150,14 @@ header{position:static}
         </svg>
       </button>
       <span class="share-icons" id="shareIconsChant">
-        <a class="share-icon line" href="#" target="_blank" rel="noopener noreferrer" aria-label="分享到LINE">
+        <a class="share-icon line" href="#" target="_self" rel="noopener noreferrer" aria-label="分享到LINE">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <rect x="3.5" y="4.5" width="17" height="13" rx="4" fill="none" stroke="currentColor" stroke-width="1.8"></rect>
             <path d="M9 17.5l-2.6 2.7.3-2.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
             <path d="M8 10h8M8 13h6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
           </svg>
         </a>
-        <a class="share-icon fb" href="#" target="_blank" rel="noopener noreferrer" aria-label="分享到Facebook">
+        <a class="share-icon fb" href="#" target="_self" rel="noopener noreferrer" aria-label="分享到Facebook">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M14 8h-2c-.55 0-1 .45-1 1v2H9v3h2v6h3v-6h2.1l.4-3H14V9h2.6V6H14z" fill="currentColor"></path>
           </svg>
@@ -203,11 +203,38 @@ function setupShareTools(containerId){
   const icons = container.querySelector('.share-icons');
   if(!toggle || !icons) return;
 
-  const encodedUrl = encodeURIComponent(window.location.href);
+  const pageUrl = window.location.href;
+  const encodedUrl = encodeURIComponent(pageUrl);
+  const encodedShareText = encodeURIComponent(`${document.title}\n${pageUrl}`);
+  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  const canNativeShare = isMobile && typeof navigator.share === 'function';
+  const nativeShareData = {title:document.title,text:document.title};
+  if(/^https?:/i.test(pageUrl)) nativeShareData.url = pageUrl;
+
   const lineLink = icons.querySelector('.share-icon.line');
   const fbLink = icons.querySelector('.share-icon.fb');
-  if(lineLink) lineLink.href = `https://social-plugins.line.me/lineit/share?url=${encodedUrl}`;
-  if(fbLink) fbLink.href = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+  if(lineLink){
+    const lineHref = `https://line.me/R/msg/text/?${encodedShareText}`;
+    lineLink.href = lineHref;
+    lineLink.addEventListener('click', (event) => {
+      if(!canNativeShare) return;
+      event.preventDefault();
+      navigator.share(nativeShareData).catch(() => {
+        window.location.href = lineHref;
+      });
+    });
+  }
+  if(fbLink){
+    const fbHref = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+    fbLink.href = fbHref;
+    fbLink.addEventListener('click', (event) => {
+      if(!canNativeShare) return;
+      event.preventDefault();
+      navigator.share(nativeShareData).catch(() => {
+        window.location.href = fbHref;
+      });
+    });
+  }
 
   toggle.addEventListener('click', (event) => {
     event.stopPropagation();
