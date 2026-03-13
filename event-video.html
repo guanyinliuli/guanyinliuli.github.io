@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>法會影片 - 觀音琉璃道場</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 body{font-family:"Noto Serif TC",serif;margin:0;background:#f6f7fb;color:#333;line-height:1.7}
 .topbar{background:#e9edf7;padding:8px 0;font-size:13px;overflow:hidden;white-space:nowrap}
@@ -34,6 +35,13 @@ nav a:hover{color:#8b1e2d;background:#f2d9df}
 .section-title .master-links{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
 .section-title .master-links a{color:#1f5ea8;font-weight:700;text-decoration:none}
 .section-title .master-links a:hover{text-decoration:underline}
+.brand-share{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:12px;flex-wrap:wrap}
+.brand-share-icon{width:42px;height:42px;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;box-shadow:0 4px 10px rgba(0,0,0,.18)}
+.brand-share-icon i{font-size:20px;line-height:1}
+.brand-share-icon.line{background:#06c755}
+.brand-share-icon.fb{background:#1877f2}
+.brand-share-icon.ig{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285aeb 90%)}
+.brand-share-icon:hover{filter:brightness(.92)}
 .video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
 .video-card{background:rgba(245,250,255,.72);border-radius:14px;padding:18px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
 .video-link{position:relative;display:block;border-radius:10px;overflow:hidden}
@@ -56,6 +64,9 @@ header{position:static;background:#fff}
 .section-title{margin-bottom:20px}
 .section-title h2{font-size:24px}
 .section-title p{font-size:14px}
+.brand-share{gap:8px;margin-top:10px}
+.brand-share-icon{width:36px;height:36px}
+.brand-share-icon i{font-size:16px}
 .video-title{font-size:17px;text-align:center}
 .video-desc{text-align:center}
 .video-desc{font-size:14px}
@@ -123,6 +134,11 @@ header{position:static;background:#fff}
   <div class="section-title">
     <h2>法會影片</h2>
     <p class="master-links"><a href="master-chant.html">法師梵唄</a><span>|</span><a href="master-talk.html">法師開示</a></p>
+    <div class="brand-share" id="shareEventVideo" aria-label="分享法會影片頁面">
+      <a class="brand-share-icon line" href="#" target="_self" rel="noopener noreferrer" aria-label="分享到LINE"><i class="fa-brands fa-line" aria-hidden="true"></i></a>
+      <a class="brand-share-icon fb" href="#" target="_self" rel="noopener noreferrer" aria-label="分享到Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+      <a class="brand-share-icon ig" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+    </div>
   </div>
 
   <div class="video-grid">
@@ -162,6 +178,53 @@ function setupTopbarSignupLinks(defaultYear){
   });
 }
 
+function setupBrandShare(containerId, shareUrl){
+  const container = document.getElementById(containerId);
+  if(!container) return;
+  const pageUrl = shareUrl || window.location.href;
+  const encodedUrl = encodeURIComponent(pageUrl);
+  const encodedShareText = encodeURIComponent(`${document.title}\n${pageUrl}`);
+  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+  function openAppOrFallback(appUrl, fallbackUrl){
+    if(!isMobile){
+      window.location.href = fallbackUrl;
+      return;
+    }
+    const timer = setTimeout(() => {
+      window.location.href = fallbackUrl;
+    }, 900);
+    const clearTimer = () => clearTimeout(timer);
+    const onVisibility = () => {
+      if(document.hidden) clearTimer();
+    };
+    window.addEventListener('pagehide', clearTimer, {once:true});
+    document.addEventListener('visibilitychange', onVisibility, {once:true});
+    window.location.href = appUrl;
+  }
+
+  const lineLink = container.querySelector('.brand-share-icon.line');
+  const fbLink = container.querySelector('.brand-share-icon.fb');
+  if(lineLink){
+    const lineHref = `https://line.me/R/msg/text/?${encodedShareText}`;
+    const lineAppHref = `line://msg/text/${encodedShareText}`;
+    lineLink.href = lineHref;
+    lineLink.addEventListener('click', (event) => {
+      event.preventDefault();
+      openAppOrFallback(lineAppHref, lineHref);
+    });
+  }
+  if(fbLink){
+    const fbHref = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+    const fbAppHref = `fb://facewebmodal/f?href=${encodeURIComponent(fbHref)}`;
+    fbLink.href = fbHref;
+    fbLink.addEventListener('click', (event) => {
+      event.preventDefault();
+      openAppOrFallback(fbAppHref, fbHref);
+    });
+  }
+}
+
 let sidebarTimer = null;
 function openSidebar(){
   const sb = document.getElementById('sidebar');
@@ -179,6 +242,7 @@ document.getElementById('menuBtn').addEventListener('click',openSidebar);
 document.querySelectorAll('#sidebar a').forEach(link=>{
   link.addEventListener('click',closeSidebar);
 });
+setupBrandShare('shareEventVideo', window.location.href.split('#')[0]);
 setupTopbarSignupLinks(2026);
 </script>
 

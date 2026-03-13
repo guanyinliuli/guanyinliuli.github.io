@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>法師梵唄 - 觀音琉璃道場</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 body{font-family:"Noto Serif TC",serif;margin:0;background:#f6f7fb;color:#333;line-height:1.7}
 .topbar{background:#e9edf7;padding:8px 0;font-size:13px;overflow:hidden;white-space:nowrap}
@@ -44,14 +45,18 @@ nav a:hover{color:#8b1e2d;background:#f2d9df}
 .share-icons{display:none;align-items:center;gap:8px;position:absolute;right:44px;top:50%;transform:translateY(-50%);padding:4px 6px;border-radius:999px;background:rgba(255,255,255,.96);box-shadow:0 4px 12px rgba(0,0,0,.2);z-index:3}
 .share-icons.open{display:inline-flex}
 .share-icon{width:36px;height:36px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;box-shadow:0 4px 10px rgba(0,0,0,.18);background:#0d47a1;border:none}
-.share-icon svg{width:18px;height:18px;display:block}
-.share-icon.line{background:#0d47a1}
-.share-icon.fb{background:#0d47a1}
-.share-icon.ig{background:#0d47a1}
-.share-icon:hover{background:#1565c0}
+.share-icon i{font-size:18px;line-height:1;display:block}
+.share-icon.line{background:#06c755}
+.share-icon.fb{background:#1877f2}
+.share-icon.ig{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285aeb 90%)}
+.share-icon:hover{filter:brightness(.92)}
 .action-links{margin-top:16px;display:flex;flex-wrap:wrap;gap:10px}
 .action-links a{display:inline-block;padding:8px 14px;border-radius:999px;background:#8b1e2d;color:#fff;text-decoration:none;font-weight:700}
 .action-links a:hover{background:#b83449}
+@media(min-width:601px){
+.back-links{position:relative;justify-content:flex-end}
+.back-links .home-link{position:absolute;left:50%;transform:translateX(-50%);margin-right:0}
+}
 footer{background:#1f5ea8;color:#fff;text-align:center;padding:28px}
 @media(max-width:600px){
 .topbar{font-size:12px}
@@ -72,7 +77,8 @@ header{position:static}
 .back-links .home-link{font-size:14px;flex:0 0 100%;margin-right:0;text-align:center}
 .share-tools{margin-left:auto}
 .share-toggle,.share-icon{width:32px;height:32px}
-.share-toggle svg,.share-icon svg{width:16px;height:16px}
+.share-toggle svg{width:16px;height:16px}
+.share-icon i{font-size:16px}
 .share-icons{right:0;top:calc(100% + 8px);transform:none;gap:6px;padding:6px;flex-direction:column;border-radius:12px}
 }
 </style>
@@ -151,23 +157,13 @@ header{position:static}
       </button>
       <span class="share-icons" id="shareIconsChant">
         <a class="share-icon line" href="#" target="_self" rel="noopener noreferrer" aria-label="分享到LINE">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <rect x="3.5" y="4.5" width="17" height="13" rx="4" fill="none" stroke="currentColor" stroke-width="1.8"></rect>
-            <path d="M9 17.5l-2.6 2.7.3-2.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M8 10h8M8 13h6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
-          </svg>
+          <i class="fa-brands fa-line" aria-hidden="true"></i>
         </a>
         <a class="share-icon fb" href="#" target="_self" rel="noopener noreferrer" aria-label="分享到Facebook">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M14 8h-2c-.55 0-1 .45-1 1v2H9v3h2v6h3v-6h2.1l.4-3H14V9h2.6V6H14z" fill="currentColor"></path>
-          </svg>
+          <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
         </a>
         <a class="share-icon ig" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <rect x="4" y="4" width="16" height="16" rx="4" fill="none" stroke="currentColor" stroke-width="1.8"></rect>
-            <circle cx="12" cy="12" r="3.5" fill="none" stroke="currentColor" stroke-width="1.8"></circle>
-            <circle cx="17.2" cy="6.8" r="1" fill="currentColor"></circle>
-          </svg>
+          <i class="fa-brands fa-instagram" aria-hidden="true"></i>
         </a>
       </span>
     </span>
@@ -207,32 +203,42 @@ function setupShareTools(containerId){
   const encodedUrl = encodeURIComponent(pageUrl);
   const encodedShareText = encodeURIComponent(`${document.title}\n${pageUrl}`);
   const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-  const canNativeShare = isMobile && typeof navigator.share === 'function';
-  const nativeShareData = {title:document.title,text:document.title};
-  if(/^https?:/i.test(pageUrl)) nativeShareData.url = pageUrl;
+
+  function openAppOrFallback(appUrl, fallbackUrl){
+    if(!isMobile){
+      window.location.href = fallbackUrl;
+      return;
+    }
+    const timer = setTimeout(() => {
+      window.location.href = fallbackUrl;
+    }, 900);
+    const clearTimer = () => clearTimeout(timer);
+    const onVisibility = () => {
+      if(document.hidden) clearTimer();
+    };
+    window.addEventListener('pagehide', clearTimer, {once:true});
+    document.addEventListener('visibilitychange', onVisibility, {once:true});
+    window.location.href = appUrl;
+  }
 
   const lineLink = icons.querySelector('.share-icon.line');
   const fbLink = icons.querySelector('.share-icon.fb');
   if(lineLink){
     const lineHref = `https://line.me/R/msg/text/?${encodedShareText}`;
+    const lineAppHref = `line://msg/text/${encodedShareText}`;
     lineLink.href = lineHref;
     lineLink.addEventListener('click', (event) => {
-      if(!canNativeShare) return;
       event.preventDefault();
-      navigator.share(nativeShareData).catch(() => {
-        window.location.href = lineHref;
-      });
+      openAppOrFallback(lineAppHref, lineHref);
     });
   }
   if(fbLink){
     const fbHref = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+    const fbAppHref = `fb://facewebmodal/f?href=${encodeURIComponent(fbHref)}`;
     fbLink.href = fbHref;
     fbLink.addEventListener('click', (event) => {
-      if(!canNativeShare) return;
       event.preventDefault();
-      navigator.share(nativeShareData).catch(() => {
-        window.location.href = fbHref;
-      });
+      openAppOrFallback(fbAppHref, fbHref);
     });
   }
 

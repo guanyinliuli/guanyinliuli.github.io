@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>觀音琉璃道場</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 body{font-family:"Noto Serif TC",serif;margin:0;background:#f6f7fb;color:#333;line-height:1.7}
 .topbar{background:#e9edf7;padding:8px 0;font-size:13px;overflow:hidden;white-space:nowrap}
@@ -88,6 +89,13 @@ nav a:hover{color:#8b1e2d;background:#f2d9df}
 .home-promo-dots button.active{background:#8b1e2d}
 .section-title{text-align:center;margin-bottom:34px}
 .section-title h2{font-size:32px;color:#8b1e2d;margin:0 0 8px}.section-title p{color:#666;margin:0}
+.brand-share{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:12px;flex-wrap:wrap}
+.brand-share-icon{width:42px;height:42px;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;box-shadow:0 4px 10px rgba(0,0,0,.18)}
+.brand-share-icon i{font-size:20px;line-height:1}
+.brand-share-icon.line{background:#06c755}
+.brand-share-icon.fb{background:#1877f2}
+.brand-share-icon.ig{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285aeb 90%)}
+.brand-share-icon:hover{filter:brightness(.92)}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
 .card{background:#fff;border-radius:14px;padding:26px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
 .news-item{border-bottom:1px solid #eee;padding:18px 22px}.news-item:last-child{border-bottom:none}.date{color:#888;font-size:13px;margin-bottom:6px}
@@ -153,6 +161,9 @@ nav a{font-size:12px;padding:6px 6px;text-align:center}
 .section-title{margin-bottom:20px}
 .section-title h2{font-size:24px}
 .section-title p{font-size:14px}
+.brand-share{gap:8px;margin-top:10px}
+.brand-share-icon{width:36px;height:36px}
+.brand-share-icon i{font-size:16px}
 .grid{grid-template-columns:1fr;gap:14px}
 .card{padding:18px;border-radius:12px}
 .news-item{padding:14px 16px}
@@ -355,7 +366,15 @@ nav{display:none}
 </section>
 
 <section class="container" id="calendar-section">
-  <div class="section-title"><h2>法會行事曆</h2><p>可點選上一月、下一月查看各月份法會資訊</p></div>
+  <div class="section-title">
+    <h2>法會行事曆</h2>
+    <p>可點選上一月、下一月查看各月份法會資訊</p>
+    <div class="brand-share" id="shareCalendarSection" aria-label="分享法會行事曆">
+      <a class="brand-share-icon line" href="#" target="_self" rel="noopener noreferrer" aria-label="分享到LINE"><i class="fa-brands fa-line" aria-hidden="true"></i></a>
+      <a class="brand-share-icon fb" href="#" target="_self" rel="noopener noreferrer" aria-label="分享到Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+      <a class="brand-share-icon ig" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+    </div>
+  </div>
   <div class="calendar-wrap">
     <div class="calendar-toolbar"><button onclick="prevMonth()">上一月</button><h3 id="monthTitle"></h3><button onclick="nextMonth()">下一月</button></div>
     <div class="calendar-week"><div>日</div><div>一</div><div>二</div><div>三</div><div>四</div><div>五</div><div>六</div></div>
@@ -488,6 +507,53 @@ function setupTopbarSignupLinks(defaultYear){
     const day = String(parseInt(matched[2],10)).padStart(2,'0');
     link.href = `event-signup.html?date=${defaultYear}-${month}-${day}`;
   });
+}
+
+function setupBrandShare(containerId, shareUrl){
+  const container = document.getElementById(containerId);
+  if(!container) return;
+  const pageUrl = shareUrl || window.location.href;
+  const encodedUrl = encodeURIComponent(pageUrl);
+  const encodedShareText = encodeURIComponent(`${document.title}\n${pageUrl}`);
+  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+  function openAppOrFallback(appUrl, fallbackUrl){
+    if(!isMobile){
+      window.location.href = fallbackUrl;
+      return;
+    }
+    const timer = setTimeout(() => {
+      window.location.href = fallbackUrl;
+    }, 900);
+    const clearTimer = () => clearTimeout(timer);
+    const onVisibility = () => {
+      if(document.hidden) clearTimer();
+    };
+    window.addEventListener('pagehide', clearTimer, {once:true});
+    document.addEventListener('visibilitychange', onVisibility, {once:true});
+    window.location.href = appUrl;
+  }
+
+  const lineLink = container.querySelector('.brand-share-icon.line');
+  const fbLink = container.querySelector('.brand-share-icon.fb');
+  if(lineLink){
+    const lineHref = `https://line.me/R/msg/text/?${encodedShareText}`;
+    const lineAppHref = `line://msg/text/${encodedShareText}`;
+    lineLink.href = lineHref;
+    lineLink.addEventListener('click', (event) => {
+      event.preventDefault();
+      openAppOrFallback(lineAppHref, lineHref);
+    });
+  }
+  if(fbLink){
+    const fbHref = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+    const fbAppHref = `fb://facewebmodal/f?href=${encodeURIComponent(fbHref)}`;
+    fbLink.href = fbHref;
+    fbLink.addEventListener('click', (event) => {
+      event.preventDefault();
+      openAppOrFallback(fbAppHref, fbHref);
+    });
+  }
 }
 
 function getQueryParam(name){
@@ -666,6 +732,8 @@ function bindSignupButtons(){
   });
 }
 bindSignupButtons();
+const calendarShareUrl = `${window.location.href.split('#')[0].split('?')[0]}#calendar-section`;
+setupBrandShare('shareCalendarSection', calendarShareUrl);
 setupTopbarSignupLinks(2026);
 </script>
 
