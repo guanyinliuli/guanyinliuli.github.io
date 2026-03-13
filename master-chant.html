@@ -66,11 +66,12 @@ footer{background:#1f5ea8;color:#fff;text-align:center;padding:28px}
 .section-title h2{font-size:24px}
 .section-title p{font-size:14px}
 .card{padding:18px}
-.back-links{gap:8px}
-.back-links .home-link{font-size:14px}
+.back-links{gap:8px;flex-wrap:wrap;justify-content:space-between;align-items:flex-start}
+.back-links .home-link{font-size:14px;flex:0 0 100%;margin-right:0;text-align:center}
+.share-tools{margin-left:auto}
 .share-toggle,.share-icon{width:32px;height:32px}
 .share-toggle svg,.share-icon svg{width:16px;height:16px}
-.share-icons{right:40px;gap:6px;padding:3px 5px}
+.share-icons{right:0;top:calc(100% + 8px);transform:none;gap:6px;padding:6px;flex-direction:column;border-radius:12px}
 }
 </style>
 </head>
@@ -236,6 +237,8 @@ function closeSidebar(){
 document.getElementById('menuBtn').addEventListener('click', openSidebar);
 document.getElementById('closeBtn').addEventListener('click', closeSidebar);
 document.querySelectorAll('#sidebar a:not(.closebtn)').forEach(link=>{
+  // Close on press so mobile tap feels in sync with page navigation.
+  link.addEventListener('pointerdown', closeSidebar, {passive:true});
   link.addEventListener('click', closeSidebar);
 });
 setupShareTools('shareChant');

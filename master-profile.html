@@ -169,6 +169,8 @@ function closeSidebar(){
 document.getElementById('menuBtn').addEventListener('click', openSidebar);
 document.getElementById('closeBtn').addEventListener('click', closeSidebar);
 document.querySelectorAll('#sidebar a:not(.closebtn)').forEach(link=>{
+  // Close on press so mobile tap feels in sync with page navigation.
+  link.addEventListener('pointerdown', closeSidebar, {passive:true});
   link.addEventListener('click', closeSidebar);
 });
 setupTopbarSignupLinks(2026);

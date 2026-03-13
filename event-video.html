@@ -13,7 +13,7 @@ body{font-family:"Noto Serif TC",serif;margin:0;background:#f6f7fb;color:#333;li
 .topbar-link{display:inline-block;color:#333;text-decoration:none}
 .topbar-link:hover{text-decoration:underline}
 @keyframes topbarMarquee{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
-header{background:#fff;border-bottom:1px solid #e5e5e5;position:sticky;top:0;z-index:20}
+header{background:#f6f7fb;border-bottom:1px solid #e5e5e5;position:sticky;top:0;z-index:20}
 .header-inner{max-width:1280px;margin:auto;padding:12px 18px;position:relative}
 .header-top{display:flex;align-items:center;justify-content:center}
 .logo{font-size:28px;font-weight:700;color:#8b1e2d;letter-spacing:1px;display:flex;align-items:center;gap:45px}
@@ -31,13 +31,16 @@ nav a:hover{color:#8b1e2d;background:#f2d9df}
 .section-title{text-align:center;margin-bottom:34px}
 .section-title h2{font-size:32px;color:#8b1e2d;margin:0 0 8px}
 .section-title p{color:#666;margin:0}
+.section-title .master-links{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.section-title .master-links a{color:#1f5ea8;font-weight:700;text-decoration:none}
+.section-title .master-links a:hover{text-decoration:underline}
 .video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
-.video-card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.video-card{background:rgba(245,250,255,.72);border-radius:14px;padding:18px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
 .video-link{position:relative;display:block;border-radius:10px;overflow:hidden}
 .video-thumb{width:100%;aspect-ratio:16/9;object-fit:contain;border-radius:10px;background:#000;display:block}
 .video-title{margin:12px 0 6px;color:#8b1e2d;font-size:18px}
 .video-desc{margin:0;color:#555;font-size:15px}
-.note-card{margin-top:24px;background:#fff;border-left:5px solid #c23c53;border-radius:10px;padding:14px 16px;box-shadow:0 6px 18px rgba(0,0,0,.05)}
+.note-card{margin-top:24px;background:rgba(245,250,255,.72);border-left:5px solid #c23c53;border-radius:10px;padding:14px 16px;box-shadow:0 6px 18px rgba(0,0,0,.05)}
 footer{background:#1f5ea8;color:#fff;text-align:center;padding:28px}
 @media(max-width:600px){
 .topbar{font-size:12px}
@@ -52,7 +55,8 @@ header{position:static}
 .section-title{margin-bottom:20px}
 .section-title h2{font-size:24px}
 .section-title p{font-size:14px}
-.video-title{font-size:17px}
+.video-title{font-size:17px;text-align:center}
+.video-desc{text-align:center}
 .video-desc{font-size:14px}
 }
 </style>
@@ -117,7 +121,7 @@ header{position:static}
 <section class="container">
   <div class="section-title">
     <h2>法會影片</h2>
-    <p>法會開示與共修影片專區</p>
+    <p class="master-links"><a href="master-chant.html">法師梵唄</a><span>|</span><a href="master-talk.html">法師開示</a></p>
   </div>
 
   <div class="video-grid">
@@ -125,18 +129,18 @@ header{position:static}
       <a class="video-link" href="https://www.youtube.com/channel/UCxfS7AvbuxHlSCRzkGfV-NA" target="_blank" rel="noopener noreferrer">
         <img class="video-thumb" src="youtube.png" alt="法會影片 YouTube 圖檔">
       </a>
-      <h3 class="video-title">法會影片一</h3>
+      <h3 class="video-title">觀音琉璃道場youtube頻道</h3>
       <p class="video-desc">點擊圖片即可前往 YouTube 觀看影片。</p>
     </article>
     <article class="video-card">
       <img class="video-thumb" src="主畫面.png" alt="法會影片封面">
       <h3 class="video-title">法會影片二</h3>
-      <p class="video-desc">影片連結整理中，後續將陸續上架。</p>
+      <p class="video-desc">影片整理中，後續將陸續上架。</p>
     </article>
     <article class="video-card">
       <img class="video-thumb" src="主畫面.png" alt="法會影片封面">
       <h3 class="video-title">法會影片三</h3>
-      <p class="video-desc">影片連結整理中，後續將陸續上架。</p>
+      <p class="video-desc">影片整理中，後續將陸續上架。</p>
     </article>
   </div>
 
