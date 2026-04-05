@@ -93,6 +93,9 @@ nav a:hover{color:#8b1e2d;background:#f2d9df}
 .home-promo-slide{min-width:100%;box-sizing:border-box}
 .home-promo-slide a{display:block}
 .home-promo-slide img{width:100%;height:clamp(220px,42vw,430px);object-fit:cover;background:transparent;display:block}
+#upcoming-dharma{background:rgba(255,252,246,0.94)}
+.upcoming-dharma-poster{max-width:860px;margin:0 auto;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.upcoming-dharma-poster img{width:100%;height:auto;display:block}
 @media(min-width:601px){
 .home-promo-slide img{object-fit:contain;object-position:center}
 }
@@ -335,6 +338,33 @@ nav{display:none}
   <div class="home-promo-dots" id="homePromoDots" aria-label="活動輪播切換"></div>
 </section>
 
+<section class="container" id="upcoming-dharma">
+  <div class="section-title">
+    <h2>法會預告</h2>
+  </div>
+  <div class="upcoming-dharma-poster">
+    <img src="2026年法訊.png" alt="2026年法訊海報">
+  </div>
+</section>
+
+<section class="container" id="calendar-section">
+  <div class="section-title">
+    <h2>法會行事曆</h2>
+    <p>可點選上一月、下一月查看各月份法會資訊</p>
+    <div class="brand-share" id="shareCalendarSection" aria-label="分享法會行事曆">
+      <a class="brand-share-icon line" href="#" target="_self" rel="noopener noreferrer" aria-label="分享到LINE"><i class="fa-brands fa-line" aria-hidden="true"></i></a>
+      <a class="brand-share-icon fb" href="#" target="_self" rel="noopener noreferrer" aria-label="分享到Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+      <a class="brand-share-icon ig" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+    </div>
+  </div>
+  <div class="calendar-wrap">
+    <div class="calendar-toolbar"><button onclick="prevMonth()">上一月</button><h3 id="monthTitle"></h3><button onclick="nextMonth()">下一月</button></div>
+    <div class="calendar-week"><div>日</div><div>一</div><div>二</div><div>三</div><div>四</div><div>五</div><div>六</div></div>
+    <div id="calendar"></div>
+    <div class="small-note">藍色標示為法會或共修活動。</div>
+  </div>
+</section>
+
 <section class="container" id="about">
   <div class="section-title">
     <h2>道場介紹</h2>
@@ -364,7 +394,7 @@ nav{display:none}
     <p>道場近期訊息與護持事項</p>
   </div>
   <div class="card" style="padding:0">
-    <div class="news-item"><div class="date">2026 / 03 / 30</div><p>【初一、十五共修】</p><p>4/2(四)早上9點 共修佛說阿彌陀經 念佛 繞佛，佛前大供暨放生。</p></div>
+    <div class="news-item"><div class="date">2026 / 04 / 05</div><p>【初一、十五共修】</p><p>4/17(五)早上9點 共修藥師琉璃光如來本願功德經，佛前大供暨放生。</p></div>
     <div class="news-item"><div class="date">2026 / 03 / 30</div><p>【慶祝觀世音菩薩聖誕】</p><p>4/6(一)早上9點 ，特舉辦禮拜八十八佛洪名寶懺。(備有消災祈福祿位)</p></div>
     <div class="news-item"><div class="date">2026 / 03 / 05</div><p>【消災祈福活動】</p><p>2026年度【佛前消災祈福光明燈禄位】年繳、半年繳登記。</p><p>（道場每逢農曆初一、十五共修及法會，三寶加被，宣疏迴向護法大德，佛光注照、本命元辰。）</p><a href="plaque.html" class="news-btn">欲知詳情</a></div>
     <div class="news-item"><div class="date">2026 / 03 / 05</div><p>【點燈活動】</p><p>為病苦者點燈（藥師經云：生病之人連續49日，日燃49燈，可得藥師琉璃光如來不可思議之加持力。）</p><p>為往生者點燈49日，可蒙佛光接引。</p><a href="lamp.html" class="news-btn">欲知詳情</a></div>
@@ -378,24 +408,6 @@ nav{display:none}
     <div class="event"><h3>每逢農曆初一、十五共修</h3><p>誦經祈福、禮懺、念佛繞佛、靜坐、佛前大供暨放生。</p></div>
     <div class="event"><h3>佛菩薩聖誕及成道日法會</h3><p>（備有消災或超薦牌位）</p><p>禮懺、誦經、祈福回向，增長福慧資糧。</p></div>
     <div class="event"><h3>中元普渡</h3><p>（備有超薦牌位）</p><p>瑜伽焰口法會，冥陽兩利、廣結善緣。</p></div>
-  </div>
-</section>
-
-<section class="container" id="calendar-section">
-  <div class="section-title">
-    <h2>法會行事曆</h2>
-    <p>可點選上一月、下一月查看各月份法會資訊</p>
-    <div class="brand-share" id="shareCalendarSection" aria-label="分享法會行事曆">
-      <a class="brand-share-icon line" href="#" target="_self" rel="noopener noreferrer" aria-label="分享到LINE"><i class="fa-brands fa-line" aria-hidden="true"></i></a>
-      <a class="brand-share-icon fb" href="#" target="_self" rel="noopener noreferrer" aria-label="分享到Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
-      <a class="brand-share-icon ig" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
-    </div>
-  </div>
-  <div class="calendar-wrap">
-    <div class="calendar-toolbar"><button onclick="prevMonth()">上一月</button><h3 id="monthTitle"></h3><button onclick="nextMonth()">下一月</button></div>
-    <div class="calendar-week"><div>日</div><div>一</div><div>二</div><div>三</div><div>四</div><div>五</div><div>六</div></div>
-    <div id="calendar"></div>
-    <div class="small-note">藍色標示為法會或共修活動。</div>
   </div>
 </section>
 
@@ -443,6 +455,7 @@ nav{display:none}
 
 <section id="traffic" class="container traffic-section">
   <div class="section-title">
+
     <h2>交通資訊</h2>
     <p>歡迎十方善信蒞臨觀音琉璃道場禮佛</p>
   </div>
